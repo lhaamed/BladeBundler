@@ -1,15 +1,15 @@
 <?php
 
-namespace lhaamed\ViewBundler;
+namespace lhaamed\ViewBundler\ServiceProviders;
 
-use App\Services\ViewBundlerService;
 use Illuminate\Support\ServiceProvider;
+use lhaamed\ViewBundler\Services\ViewBundlerService;
 
 class ViewBundlerServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->app->bind('ViewBundler', function ($app) {
+        $this->app->singleton('view-bundler', function ($app) {
             return new ViewBundlerService();
         });
     }

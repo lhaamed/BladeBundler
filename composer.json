@@ -1,5 +1,5 @@
 {
-    "name": "lhaamed/laravel-view-bundler",
+    "name": "lhaamed/view-bundler",
     "require": {
         "laravel/framework": "^10.*",
         "php": "^8.1"
@@ -7,7 +7,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Lhaamed\\LaravelViewBundler\\": "src/"
+            "lhaamed\\ViewBundler\\": "src/"
         }
     },
     "authors": [

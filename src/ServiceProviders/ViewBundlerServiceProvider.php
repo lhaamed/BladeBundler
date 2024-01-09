@@ -9,8 +9,8 @@ class ViewBundlerServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->app->singleton('view-bundler', function ($app) {
-            return new ViewBundlerService();
+        $this->app->bind('Bundler', function ($app) {
+            return new ViewBundlerService;
         });
     }
 }

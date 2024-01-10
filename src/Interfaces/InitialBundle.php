@@ -17,4 +17,9 @@ class InitialBundle  {
         if (!is_null($title)) $this->title = $title;
         return $this;
     }
+
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
 }

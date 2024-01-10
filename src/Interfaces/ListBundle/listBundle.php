@@ -2,7 +2,6 @@
 
 namespace lhaamed\ViewBundler\Interfaces\ListBundle;
 
-use JetBrains\PhpStorm\Pure;
 use lhaamed\ViewBundler\Interfaces\InitialBundle;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
@@ -16,6 +15,7 @@ class listBundle extends InitialBundle
         'records' => null,
         'pagination' => null,
     ];
+    public string $emptyStateContent = '<tr class="text-center"><td colspan="50">موردی یافت نشد.</td></tr>';
 
     public function __construct(?string $title = null, Collection|LengthAwarePaginator|null $query = null)
     {
@@ -47,5 +47,18 @@ class listBundle extends InitialBundle
     {
         $this->table['pagination'] = $pagination;
         return $this;
+    }
+
+
+    public function setEmptyListDefaultView(string $renderedContent): static
+    {
+        $this->emptyStateContent = $renderedContent;
+        return $this;
+    }
+
+
+    public function hasAnyRecordToShow(): bool
+    {
+        return count($this->table['records']) > 0;
     }
 }

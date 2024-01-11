@@ -1,20 +1,22 @@
 <?php
 
-namespace lhaamed\ViewBundler\Interfaces\ListBundle;
+namespace lhaamed\ViewBundler\Classes\ListBundle;
 
-use lhaamed\ViewBundler\Interfaces\InitialBundle;
+use lhaamed\ViewBundler\Classes\formBundle\searchFormBundle;
+use lhaamed\ViewBundler\Classes\InitialBundle;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 
 class listBundle extends InitialBundle
 {
 
-    public Collection|LengthAwarePaginator|null $records = null;
     public array $table = [
         'headers' => [],
         'records' => null,
         'pagination' => null,
     ];
+    public Collection|LengthAwarePaginator|null $records = null;
+    public ?searchFormBundle $searchFormBundle = null;
     public string $emptyStateContent = '<tr class="text-center"><td colspan="50">موردی یافت نشد.</td></tr>';
 
     public function __construct(?string $title = null, Collection|LengthAwarePaginator|null $query = null)
@@ -46,6 +48,12 @@ class listBundle extends InitialBundle
     public function setTablePagination($pagination): static
     {
         $this->table['pagination'] = $pagination;
+        return $this;
+    }
+
+    public function setSearchForm(searchFormBundle $searchFormBundle): static
+    {
+        $this->searchFormBundle = $searchFormBundle;
         return $this;
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace lhaamed\ViewBundler\Interfaces;
+namespace lhaamed\ViewBundler\Classes;
 
 class InitialBundle  {
 

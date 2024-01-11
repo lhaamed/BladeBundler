@@ -5,7 +5,7 @@ namespace lhaamed\ViewBundler\Facades;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Facade;
-use lhaamed\ViewBundler\Interfaces\ListBundle\listBundle;
+use lhaamed\ViewBundler\Classes\ListBundle\listBundle;
 
 class Bundler extends Facade
 {

@@ -9,10 +9,13 @@ use lhaamed\ViewBundler\Classes\InitialBundle;
 class searchFormBundle extends InitialBundle
 {
 
-    public function __construct(?string $title = null, Collection|LengthAwarePaginator|null $query = null)
+    public function __construct(?string $title = null)
     {
         parent::__construct($title);
+    }
 
-
+    public static function defaultFilterPattern(): searchFormBundle
+    {
+        return new self('search filter form');
     }
 }

@@ -51,6 +51,13 @@ class listBundle extends InitialBundle
         return $this;
     }
 
+
+    public function generateSearchForm(callable|array $filterPattern = [searchFormBundle::class,'defaultFilterPattern'])
+    {
+        $searchFormBundle = $filterPattern();
+        dd($searchFormBundle);
+    }
+
     public function setSearchForm(searchFormBundle $searchFormBundle): static
     {
         $this->searchFormBundle = $searchFormBundle;

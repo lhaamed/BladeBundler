@@ -1,6 +1,6 @@
 <?php
 
-namespace lhaamed\ViewBundler\Services;
+namespace ViewBundler\Services;
 
 class ViewBundlerService
 {

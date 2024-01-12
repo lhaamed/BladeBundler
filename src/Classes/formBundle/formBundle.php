@@ -7,7 +7,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use JetBrains\PhpStorm\Pure;
 use ViewBundler\Classes\InitialBundle;
 
-class searchFormBundle extends formBundle
+class formBundle extends InitialBundle
 {
 
     #[Pure] public function __construct(?string $title = null)
@@ -15,8 +15,4 @@ class searchFormBundle extends formBundle
         parent::__construct($title);
     }
 
-    #[Pure] public static function defaultFilterPattern(): searchFormBundle
-    {
-        return new self('search filter form');
-    }
 }

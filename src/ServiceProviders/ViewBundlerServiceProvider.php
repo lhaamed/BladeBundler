@@ -1,9 +1,9 @@
 <?php
 
-namespace lhaamed\ViewBundler\ServiceProviders;
+namespace ViewBundler\ServiceProviders;
 
 use Illuminate\Support\ServiceProvider;
-use lhaamed\ViewBundler\Services\ViewBundlerService;
+use ViewBundler\Services\ViewBundlerService;
 
 class ViewBundlerServiceProvider extends ServiceProvider
 {

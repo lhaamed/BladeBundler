@@ -1,9 +1,9 @@
 <?php
 
-namespace lhaamed\ViewBundler\Classes\ListBundle;
+namespace ViewBundler\Classes\ListBundle;
 
-use lhaamed\ViewBundler\Classes\formBundle\searchFormBundle;
-use lhaamed\ViewBundler\Classes\InitialBundle;
+use ViewBundler\Classes\formBundle\searchFormBundle;
+use ViewBundler\Classes\InitialBundle;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -15,7 +15,7 @@ class listBundle extends InitialBundle
         'records' => null,
         'pagination' => null,
     ];
-    public Collection|LengthAwarePaginator|null $records = null;
+    private Collection|LengthAwarePaginator|null $records = null;
     public ?searchFormBundle $searchFormBundle = null;
     public string $emptyStateContent = '<tr class="text-center"><td colspan="50">موردی یافت نشد.</td></tr>';
 
@@ -52,10 +52,16 @@ class listBundle extends InitialBundle
     }
 
 
-    public function generateSearchForm(callable|array $filterPattern = [searchFormBundle::class,'defaultFilterPattern'])
+    public function generateSearchForm(?callable $filterPattern = null): listBundle
     {
-        $searchFormBundle = $filterPattern();
-        dd($searchFormBundle);
+        if (isset($filterPattern)) {
+
+            $searchFormBundle = $filterPattern();
+        } else {
+            $searchFormBundle = searchFormBundle::defaultFilterPattern();
+        }
+        $this->setSearchForm($searchFormBundle);
+        return $this;
     }
 
     public function setSearchForm(searchFormBundle $searchFormBundle): static
@@ -71,6 +77,11 @@ class listBundle extends InitialBundle
         return $this;
     }
 
+    public function clearRecords(): static
+    {
+        $this->records = null;
+        return $this;
+    }
 
     public function hasAnyRecordToShow(): bool
     {

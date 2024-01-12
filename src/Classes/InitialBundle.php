@@ -4,7 +4,7 @@ namespace ViewBundler\Classes;
 
 class InitialBundle  {
 
-    public string $title = 'Pack Title';
+    public string $title = 'Bundle Title';
 //    public linkPack $links;
 
     public function __construct(?string $title = null){

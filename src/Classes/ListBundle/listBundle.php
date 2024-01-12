@@ -21,7 +21,7 @@ class listBundle extends InitialBundle
 
     public function __construct(?string $title = null, Collection|LengthAwarePaginator|null $query = null)
     {
-        parent::__construct($title);
+        parent::__construct($title ?? 'list Bundle');
 
         if (isset($query)) $this->setRecords($query);
         else $this->records = new Collection();
@@ -87,4 +87,5 @@ class listBundle extends InitialBundle
     {
         return count($this->table['records']) > 0;
     }
+
 }

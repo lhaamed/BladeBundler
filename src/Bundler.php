@@ -5,6 +5,8 @@ namespace ViewBundler;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Facade;
+use JetBrains\PhpStorm\Pure;
+use ViewBundler\Classes\formBundle\formBundle;
 use ViewBundler\Classes\ListBundle\listBundle;
 use function request;
 
@@ -17,20 +19,18 @@ class Bundler extends Facade
 
     public static function generateList(Collection|LengthAwarePaginator|null $query, callable $QueryMap): listBundle
     {
-        $listBundle = new listBundle('list Generator');
+        $listBundle = new listBundle();
         return self::listGenerator($listBundle, $query, $QueryMap);
     }
-    public static function regenerateList(listBundle $oldBundle,Collection|LengthAwarePaginator|null $query, callable $QueryMap): listBundle
+
+    public static function regenerateList(listBundle $oldBundle, Collection|LengthAwarePaginator|null $query, callable $QueryMap): listBundle
     {
         return self::listGenerator($oldBundle, $query, $QueryMap);
     }
+
     private static function listGenerator(listBundle $oldBundle, $query, callable $QueryMap): listBundle
     {
-        $listBundle = $oldBundle;
-        $mappedData = $QueryMap($query);
-        $listBundle->setTableHeader($mappedData['headers']);
-        $listBundle->setTableRecords($mappedData['records']);
-        $listBundle->setTitle($mappedData['title']);
+        $listBundle = $QueryMap($oldBundle, $query);
         if ($query instanceof LengthAwarePaginator) {
             $pagination = $query->appends(request()->query())->links();
         } else {
@@ -42,11 +42,50 @@ class Bundler extends Facade
     }
 
 
-    public static function checkInstance(mixed $object,$checkValue): string
+    #[Pure] public static function generateForm(?string $title, string $action,?string $method = 'POST'): formBundle
     {
+        return new formBundle($title, $action, $method);
+    }
 
-        if (get_class($object) == 'ViewBundler\Classes\ListBundle\listBundle') {
-            return 'list' == $checkValue;
-        }else return get_class($object);
+
+    public static function getQueryItems(LengthAwarePaginator|Collection $query): array
+    {
+        if ($query instanceof LengthAwarePaginator) {
+            return $query->items();
+        } else {
+            return $query->toArray();
+        }
+    }
+
+
+    // STATUS CHECK FUNCTIONS
+
+
+    public static function isList(mixed $object): bool
+    {
+        return get_class($object) == 'ViewBundler\Classes\ListBundle\listBundle';
+    }
+
+    public static function isForm(mixed $object): bool
+    {
+        return get_class($object) == 'ViewBundler\Classes\formBundle\formBundle';
+    }
+
+    public static function renderLink(array $data): string
+    {
+        if (isset($data['title'])) $title = $data['title'];
+        $icon = $data['icon'];
+        if (isset($data['class'])) $class = $data['class']; else $class = null;
+        if (isset($data['route'])) $route = $data['route'];
+        $href = $data['href'];
+        $target = $data['target'] ?? '_self';
+        $rel = $data['rel'] ?? 'nofollow';
+
+
+        $finalTitle = $icon ? view('theme.sleek.components.fs-icon', ['icon' => $icon])->render() : $title;
+        $finalHref = $href ?? route($route);
+
+
+        return "<a href='$finalHref' rel='$rel' target='$target' class='$class'>{$finalTitle}</a>";
     }
 }

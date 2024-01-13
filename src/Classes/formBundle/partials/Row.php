@@ -1,6 +1,6 @@
 <?php
 
-namespace ViewBundler\Classes\formBundle\partials;
+namespace BladeBundler\Classes\formBundle\partials;
 
 class Row {
     public ?string $row_custom_class = null;

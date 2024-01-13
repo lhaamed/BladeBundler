@@ -1,20 +1,20 @@
 <?php
 
-namespace ViewBundler;
+namespace BladeBundler;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Facade;
 use JetBrains\PhpStorm\Pure;
-use ViewBundler\Classes\formBundle\formBundle;
-use ViewBundler\Classes\ListBundle\listBundle;
+use BladeBundler\Classes\formBundle\formBundle;
+use BladeBundler\Classes\ListBundle\listBundle;
 use function request;
 
-class Bundler extends Facade
+class BB extends Facade
 {
     protected static function getFacadeAccessor(): string
     {
-        return 'Bundler';
+        return 'BB';
     }
 
     public static function generateList(Collection|LengthAwarePaginator|null $query, callable $QueryMap): listBundle
@@ -63,12 +63,12 @@ class Bundler extends Facade
 
     public static function isList(mixed $object): bool
     {
-        return get_class($object) == 'ViewBundler\Classes\ListBundle\listBundle';
+        return get_class($object) == 'BladeBundler\Classes\ListBundle\listBundle';
     }
 
     public static function isForm(mixed $object): bool
     {
-        return get_class($object) == 'ViewBundler\Classes\formBundle\formBundle';
+        return get_class($object) == 'BladeBundler\Classes\formBundle\formBundle';
     }
 
     public static function renderLink(array $data): string

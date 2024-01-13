@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | ViewBundler Configuration
+    | BladeBundler Configuration
     |--------------------------------------------------------------------------
     |
     |   any kind of configurations are declared here.

@@ -1,6 +1,6 @@
 <?php
 
-namespace ViewBundler\Classes;
+namespace BladeBundler\Classes;
 
 class InitialBundle  {
 

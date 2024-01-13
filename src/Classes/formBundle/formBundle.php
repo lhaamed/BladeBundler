@@ -1,13 +1,13 @@
 <?php
 
-namespace ViewBundler\Classes\formBundle;
+namespace BladeBundler\Classes\formBundle;
 
 use App\Packing\linkPack;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 use JetBrains\PhpStorm\Pure;
-use ViewBundler\Classes\formBundle\partials\Section;
-use ViewBundler\Classes\InitialBundle;
+use BladeBundler\Classes\formBundle\partials\Section;
+use BladeBundler\Classes\InitialBundle;
 
 class formBundle extends InitialBundle
 {

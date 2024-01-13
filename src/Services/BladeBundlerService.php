@@ -1,8 +1,8 @@
 <?php
 
-namespace ViewBundler\Services;
+namespace BladeBundler\Services;
 
-class ViewBundlerService
+class BladeBundlerService
 {
     public static function doSomething($data)
     {

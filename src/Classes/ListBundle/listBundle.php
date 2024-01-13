@@ -1,9 +1,9 @@
 <?php
 
-namespace ViewBundler\Classes\ListBundle;
+namespace BladeBundler\Classes\ListBundle;
 
-use ViewBundler\Classes\formBundle\searchFormBundle;
-use ViewBundler\Classes\InitialBundle;
+use BladeBundler\Classes\formBundle\searchFormBundle;
+use BladeBundler\Classes\InitialBundle;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -55,7 +55,6 @@ class listBundle extends InitialBundle
     public function generateSearchForm(?callable $filterPattern = null): listBundle
     {
         if (isset($filterPattern)) {
-
             $searchFormBundle = $filterPattern();
         } else {
             $searchFormBundle = searchFormBundle::defaultFilterPattern();

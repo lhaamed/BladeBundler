@@ -2,8 +2,10 @@
 
 namespace BladeBundler\Classes\formBundle\partials;
 
+use BladeBundler\Classes\formBundle\partials\cells\emailCell;
 use BladeBundler\Classes\formBundle\partials\cells\numberCell;
 use BladeBundler\Classes\formBundle\partials\cells\passwordCell;
+use BladeBundler\Classes\formBundle\partials\cells\telCell;
 use BladeBundler\Classes\formBundle\partials\cells\textareaCell;
 use BladeBundler\Classes\formBundle\partials\cells\textCell;
 
@@ -59,6 +61,8 @@ class Row
         return match ($type) {
             'text' => new textCell($name, $id, $config),
             'number' => new numberCell($name, $id, $config),
+            'email' => new emailCell($name, $id, $config),
+            'tel' => new telCell($name, $id, $config),
             'textarea' => new textareaCell($name, $id, $config),
             'password' => new passwordCell($name, $id, $config),
             default => new Cell($type, $name, $id),

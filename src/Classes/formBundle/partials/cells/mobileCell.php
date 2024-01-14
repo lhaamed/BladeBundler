@@ -4,7 +4,7 @@ namespace BladeBundler\Classes\formBundle\partials\cells;
 
 use BladeBundler\Classes\formBundle\partials\Cell;
 
-class hiddenCell extends Cell{
+class mobileCell extends Cell{
 
 
 

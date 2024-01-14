@@ -7,7 +7,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "lhaamed\\ViewBundler\\": "src/"
+            "lhaamed\\BladeBundler\\": "src/"
         }
     },
     "authors": [

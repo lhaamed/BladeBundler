@@ -21,8 +21,6 @@
             @include('BladeBundler::formBundle.components.inputs.number',['cell' => $cell])
         @elseif($cell instanceof \BladeBundler\Classes\formBundle\partials\cells\telCell)
             @include('BladeBundler::formBundle.components.inputs.text',['cell' => $cell])
-        @elseif($cell instanceof \BladeBundler\Classes\formBundle\partials\cells\mobileCell)
-            @include('BladeBundler::formBundle.components.inputs.mobile',['cell' => $cell])
         @elseif($cell instanceof \BladeBundler\Classes\formBundle\partials\cells\colorCell)
             @include('BladeBundler::formBundle.components.inputs.color',['cell' => $cell])
         @elseif($cell instanceof \BladeBundler\Classes\formBundle\partials\cells\selectCell)

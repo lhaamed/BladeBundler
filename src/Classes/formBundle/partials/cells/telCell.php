@@ -16,7 +16,6 @@ class telCell extends Cell{
 
     public function setPattern(?string $pattern = null)
     {
-
         if (!is_null($pattern)) $this->pattern = $pattern;
     }
 }

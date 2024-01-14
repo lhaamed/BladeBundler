@@ -6,13 +6,8 @@ use BladeBundler\Classes\formBundle\partials\Cell;
 
 class textCell extends Cell{
 
-
-    public string $label;
-
-    public function __construct(string $name, string $id,?string $label = null,?string $default = null)
+    public function __construct(string $name, string $id,array $config)
     {
-        $this->label = $label;
-        $this->default = $default;
-        parent::__construct('input',$name,$id);
+        parent::__construct('input',$name,$id,$config);
     }
 }

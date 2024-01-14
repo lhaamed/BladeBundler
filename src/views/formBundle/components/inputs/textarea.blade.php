@@ -1,10 +1,13 @@
-@isset($inputObject)
+@isset($cell)
     <textarea
         class="form-control"
-        name="{{ $inputObject['name'] }}"
-        placeholder="{{ $inputObject['placeholder'] }}"
-        @if($inputObject['required'] == true) required @endif rows="8"
-        id="{{ $inputObject['id'] }}">@if(isset($inputObject['default_value'])){{ $inputObject['default_value'] }}@else{{ old($inputObject['name']) }}@endif</textarea>
+        name="{{ $cell->name }}"
+        placeholder="{{ $cell->placeholder }}"
+        @if($cell->required === true) required @endif
+        rows="{{ $cell->rows }}" cols="{{ $cell->cols }}"
+        @isset($cell->min) minlength="{{ $cell->min }}" @endisset
+        maxlength="{{ $cell->max }}"
+        id="{{ $cell->id }}">@if(isset($cell->default)){{ $cell->default }}@else{{ old($cell->name) }}@endif</textarea>
 @endisset
 
 

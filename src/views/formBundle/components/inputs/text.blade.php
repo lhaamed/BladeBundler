@@ -1,17 +1,14 @@
 @isset($cell)
-
-
-{{--    {{ dd($errors,old('serial2.2'),old('serial2[].2')) }}--}}
-    <input class="form-control @isset($cell->custom_class){{$cell->custom_class}} @endisset"
+    <input class="form-control @isset($cell->class){{$cell->class}} @endisset"
            type="{{ $cell->type }}"
            id="{{ $cell->id }}"
            name="{{ $cell->name }}"
-           @isset($inputObject['min']) minlength="{{$inputObject['min']}}" @endisset
-           @isset($inputObject['max']) minlength="{{$inputObject['max']}}" @endisset
+           @isset($cell->min) minlength="{{$cell->min}}" @endisset
+           @if(isset($cell->max)) maxlength="{{ $cell->max }}" @endif
            placeholder="{{ $cell->placeholder }}"
-           @if(isset($inputObject['reverse_direction']) && $inputObject['reverse_direction'] == true) dir="ltr" @endif
-           @if(isset($inputObject['max'])) maxlength="{{ $inputObject['max'] }}" @endif
+           @if(isset($cell->reverse) && $cell->reverse === true) dir="ltr" @endif
            value="@if(old($cell->id) !== null){{ old($cell->id) }}@elseif(isset($cell->default)){{ $cell->default }}@endif"
-           @if($cell->required) required @endif @if(isset($cell->disabled) && $cell->disabled) disabled @endif>
+           @if($cell->required) required @endif
+           @if(isset($cell->disabled) && $cell->disabled) disabled @endif>
 @endisset
 

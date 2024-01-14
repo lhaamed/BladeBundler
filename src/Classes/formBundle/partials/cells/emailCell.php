@@ -7,7 +7,6 @@ use BladeBundler\Classes\formBundle\partials\Cell;
 class emailCell extends Cell{
 
 
-    public string $label;
 
     public function __construct(string $name, string $id,?string $label = null,?string $default = null)
     {

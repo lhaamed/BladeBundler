@@ -2,6 +2,11 @@
 
 namespace BladeBundler\Classes\formBundle\partials;
 
+use BladeBundler\Classes\formBundle\partials\cells\numberCell;
+use BladeBundler\Classes\formBundle\partials\cells\passwordCell;
+use BladeBundler\Classes\formBundle\partials\cells\textareaCell;
+use BladeBundler\Classes\formBundle\partials\cells\textCell;
+
 class Row
 {
     public ?string $custom_class = null;
@@ -38,14 +43,37 @@ class Row
     }
 
 
-    public function appendCell(Cell $cell): static
+    private function appendCell(Cell $cell): static
     {
         $this->cells[] = $cell;
         return $this;
     }
-    public function prependCell(Cell $cell): static
+    private function prependCell(Cell $cell): static
     {
         array_unshift($this->cells, $cell);
         return $this;
+    }
+
+    private function generateCell(string $type,string $name,string $id, array $config): Cell
+    {
+        return match ($type) {
+            'text' => new textCell($name, $id, $config),
+            'number' => new numberCell($name, $id, $config),
+            'textarea' => new textareaCell($name, $id, $config),
+            'password' => new passwordCell($name, $id, $config),
+            default => new Cell($type, $name, $id),
+        };
+    }
+
+
+
+
+    public function appendInput(string $type,string $name,string $id, array $config): static
+    {
+        return $this->appendCell($this->generateCell($type,$name,$id,$config));
+    }
+    public function prependInput(string $type,string $name,string $id, array $config): static
+    {
+        return $this->prependCell($this->generateCell($type,$name,$id,$config));
     }
 }

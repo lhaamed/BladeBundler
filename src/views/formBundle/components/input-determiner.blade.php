@@ -4,20 +4,19 @@
     @include('BladeBundler::formBundle.components.inputs.check-box',['cell' => $cell])
 @else
 
-    <div class="form-group {{ $cell->custom_class }} @isset($row) {{ $row->each_cell_default_class }} @endisset">
+    <div class="form-group {{ $cell->class }} @isset($row) {{ $row->each_cell_default_class }} @endisset">
         @isset($cell->label)
             <label for="{{ $cell->id }}" class="mx-2">{{ $cell->label }} @if($cell->required)
                     *
                 @endif</label>
         @endisset
 
-
         @if($cell instanceof \BladeBundler\Classes\formBundle\partials\cells\textCell)
             @include('BladeBundler::formBundle.components.inputs.text',['cell' => $cell])
         @elseif($cell instanceof \BladeBundler\Classes\formBundle\partials\cells\emailCell)
             @include('BladeBundler::formBundle.components.inputs.text',['cell' => $cell])
         @elseif($cell instanceof \BladeBundler\Classes\formBundle\partials\cells\passwordCell)
-            @include('BladeBundler::formBundle.components.inputs.text',['cell' => $cell])
+            @include('BladeBundler::formBundle.components.inputs.password',['cell' => $cell])
         @elseif($cell instanceof \BladeBundler\Classes\formBundle\partials\cells\telCell)
             @include('BladeBundler::formBundle.components.inputs.text',['cell' => $cell])
         @elseif($cell instanceof \BladeBundler\Classes\formBundle\partials\cells\numberCell)
@@ -28,7 +27,6 @@
             @include('BladeBundler::formBundle.components.inputs.select',['cell' => $cell])
         @elseif($cell instanceof \BladeBundler\Classes\formBundle\partials\cells\textareaCell)
             @include('BladeBundler::formBundle.components.inputs.textarea',['cell' => $cell])
-
         @elseif($cell instanceof \BladeBundler\Classes\formBundle\partials\cells\fileCell)
             @include('BladeBundler::formBundle.components.inputs.file',['cell' => $cell])
         @endif

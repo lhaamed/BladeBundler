@@ -9,35 +9,74 @@ class Cell {
     public string $type;
     public array $validTypes = ['hidden','input','number','password','tel','email','color','textarea','select','checkbox','file'];
 
+    public ?string $label = null;
     public mixed $default = null;
-    public string|null $custom_class = '';
-
     public string $placeholder = '';
     public string $class = '';
     public bool $required = false;
     public bool $disabled = false;
-    public bool $reverse_dir = false;
+    public bool $reverse = false;
 
 
 
-    function __construct(string $type,string $name, string $id)
+    function __construct(string $type,string $name, string $id,array $config = [])
     {
         $this->name = $name;
         $this->id = $id;
 
-        if (in_array($type,$this->validTypes)){
-            $this->type = $type;
-        }
+        $this->setType($type);
+        $this->setLabel($config['label'] ?? null);
+        $this->setDefault($config['default'] ?? null);
+        $this->setPlaceholder($config['placeholder'] ?? null);
+        $this->setClass($config['class'] ?? null);
+        $this->setRequired($config['required'] ?? null);
+        $this->setDisabled($config['disabled'] ?? null);
+        $this->setReverse($config['reverse'] ?? null);
+    }
 
-//        if (isset($data['type'])) $this->type = $data['type'];
-//        if (isset($data['placeholder'])) $this->placeholder = $data['placeholder'];
-//        if (isset($data['class'])) $this->class = $data['class'];
-//        if (isset($data['required'])) $this->required =!!$data['required'];
-//        if (isset($data['disabled'])) $this->disabled = !!$data['disabled'];
-//        if (isset($data['reverse_dir'])) $this->reverse_dir = !!$data['reverse_dir'];
+    // SETTERS
+
+
+    public function setType(string $type)
+    {
+        if (in_array($type,$this->validTypes)) $this->type = $type;
+
+    }
+
+    public function setPlaceholder(?string $placeholder = null): void
+    {
+        if (!is_null($placeholder)) $this->placeholder = $placeholder;
     }
 
     /**
-     * @return string
+     * @param mixed|null $default
+     * @return void
      */
+    public function setDefault(mixed $default = null): void
+    {
+        $this->default = $default;
+    }
+
+    public function setLabel(?string $label = null): void
+    {
+        $this->label = $label;
+    }
+
+    public function setClass(?string $class = null): void
+    {
+        if (!is_null($class)) $this->class = $class;
+    }
+
+    public function setRequired(mixed $required = null): void
+    {
+        if (!is_null($required)) $this->required = !!$required;
+    }
+    public function setDisabled(mixed $disabled = null): void
+    {
+        if (!is_null($disabled)) $this->disabled = !!$disabled;
+    }
+    public function setReverse(mixed $reverse = null): void
+    {
+        if (!is_null($reverse)) $this->reverse = !!$reverse;
+    }
 }

@@ -1,21 +1,14 @@
-@isset($inputObject)
+@isset($cell)
     <input class="form-control"
-           type="{{ $inputObject['type'] }}"
-           id="{{ $inputObject['id'] }}"
-           name="{{ $inputObject['name'] }}"
-           placeholder="{{ $inputObject['placeholder'] }}"
-           @if(isset($inputObject['min']))
-           min="{{ $inputObject['min'] }}"
-           @endif
-           @if(isset($inputObject['max']))
-           max="{{ $inputObject['max'] }}"
-           @endif
-
-           @if(isset($inputObject['step']))
-           step="{{ $inputObject['step'] }}"
-           @endif
-           value="@if(isset($inputObject['default_value'])){{ $inputObject['default_value'] }}@else{{ old($inputObject['name']) }}@endif"
-           @if($cell['required'] == true) required @endif>
+           type="{{ $cell->type }}"
+           id="{{ $cell->id }}"
+           name="{{ $cell->name }}"
+           placeholder="{{ $cell->placeholder }}"
+           @if(isset($cell->min)) min="{{ $cell->min }}" @endif
+           @if(isset($cell->max)) max="{{ $cell->max }}" @endif
+           step="{{ $cell->step }}"
+           value="@if(isset($cell->default)){{ $cell->default }}@else{{ old($cell->name) }}@endif"
+           @if($cell->required === true) required @endif>
 @endisset
 
 

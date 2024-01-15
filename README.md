@@ -1,25 +1,25 @@
 
 # BladeBundler
 
-a super efficient package to bundle all similar structures for your laravel blades. Using this package will give you incredible development speed, which is necessary in critical points. You will be able to customize it in any level you want.
+a super efficient package to bundle all similar structures for your Laravel blades. Using this package will give you incredible development speed, which is necessary at critical points. You will be able to customize it to any level you want.
 
 
 ## Installation
 
-Like any other packages in the packagist you'll need to add serviceProvider and Facade aliases into your config/app.php using following lines:
+Like any other packages in the Packagist you'll need to add service provider and Facade aliases into your config/app.php using the following lines:
 
-first add this as a serviceProvider in "providers" array:
+first, add this as a service provider in the "providers" array:
 ```bash
   BladeBundler\ServiceProviders\BladeBundlerServiceProvider::class,
 ```
 
 
-then add this as a aliases in "aliases" array:
+then add this as an alias in the "aliases" array:
 ```bash
   'BB' => BladeBundler\BB::class
 ```
 
-never forget to use following commands in terminal because you have changed config files.
+never forget to use the following commands in the terminal because you have changed config files.
 
 
 ```bash
@@ -56,16 +56,16 @@ public static function defaultListMap(listBundle $listBundle ,LengthAwarePaginat
 
         return [
             $recordModel->showName(),
-            $recordModel->showCategoriesCount(),
+            $recordModel->showLastname(),
             'actions' => $action_links
         ];
     }, $items);
 
     $listBundle->setTitle('custom title for the list');
     $listBundle->setTableHeader([
-        'نام',
-        'تعداد ' . Category::getModelName(true),
-        'عملیات',
+        'name',
+        'lastname',
+        'actions',
     ]);
     $listBundle->setTableRecords($mappedData);
 
@@ -73,7 +73,7 @@ public static function defaultListMap(listBundle $listBundle ,LengthAwarePaginat
 }
 ```
 
-in this function you define what are the heads and each cell's exact value. so you have full control over your list in a better way.
+in this function, you define what are the heads and each cell's exact value. so you have full control over your list in a better way.
 
 
 

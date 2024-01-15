@@ -6,7 +6,7 @@ use BladeBundler\Classes\formBundle\partials\Cell;
 
 class passwordCell extends Cell {
 
-    public bool $show_switch = true;
+    public bool $show_switch = false;
 
 
     public function __construct(string $name, string $id,array $config)

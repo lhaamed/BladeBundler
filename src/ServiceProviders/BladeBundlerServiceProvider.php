@@ -21,6 +21,7 @@ class BladeBundlerServiceProvider extends ServiceProvider
 //        dd(__DIR__.'\\..\\view');
         $this->loadViewsFrom(__DIR__.'/../views','BladeBundler');
 
+
         $this->publishes([
             __DIR__ . '/../config/BladeBundler.php' => config_path('BladeBundler.php'),
         ],'config');
@@ -28,6 +29,10 @@ class BladeBundlerServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../views' => base_path('resources/views/bundler'),
         ],'bundler-views');
+
+        $this->publishes([
+            __DIR__ . '/../assets' => base_path('resources/js/bundler'),
+        ],'bundler-assets');
     }
 
     public function configurePackage($package): void

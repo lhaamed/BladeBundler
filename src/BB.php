@@ -82,7 +82,7 @@ class BB extends Facade
         $rel = $data['rel'] ?? 'nofollow';
 
 
-        $finalTitle = $icon ? view('theme.sleek.components.fs-icon', ['icon' => $icon])->render() : $title;
+        $finalTitle = $icon ? view('fs.fs-icon', ['icon' => $icon])->render() : $title;
         $finalHref = $href ?? route($route);
 
 

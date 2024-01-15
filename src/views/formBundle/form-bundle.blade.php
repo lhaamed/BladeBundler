@@ -42,7 +42,3 @@
         @endisset
     </div>
 </form>
-
-
-
-<script src="../lhaamed/BladeBundler/src/assets/scripts-bbjs.js"></script>

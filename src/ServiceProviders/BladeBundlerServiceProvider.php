@@ -31,7 +31,7 @@ class BladeBundlerServiceProvider extends ServiceProvider
         ],'bundler-views');
 
         $this->publishes([
-            __DIR__ . '/../assets' => base_path('resources/js/bundler'),
+            __DIR__ . '/../assets' => base_path('public/assets/bundler/js'),
         ],'bundler-assets');
     }
 

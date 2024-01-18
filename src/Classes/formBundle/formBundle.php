@@ -27,6 +27,7 @@ class formBundle extends InitialBundle
         parent::__construct($title);
         $this->setAction($action);
         $this->setMethod($method);
+        $this->hasCSRF = ($this->method !== 'GET');
     }
 
 
@@ -66,15 +67,24 @@ class formBundle extends InitialBundle
         $this->submit_button['custom_class'] = $custom_class ?? '';
     }
 
+    public function addCSRF()
+    {
+        $this->hasCSRF = true;
+    }
+
+    public function removeCSRF()
+    {
+        $this->hasCSRF = false;
+    }
 
 
-    function appendSection($name = null, $custom_class = null, $each_row_default_class = null): Section
+    public function appendSection($name = null, $custom_class = null, $each_row_default_class = null): Section
     {
         $newSection = new Section($name, $custom_class, $each_row_default_class);
         $this->sections[] = $newSection;
         return $newSection;
     }
-    function prependSection($name = null, $custom_class = null, $each_row_default_class = null): Section
+    public function prependSection($name = null, $custom_class = null, $each_row_default_class = null): Section
     {
         $newSection = new Section($name, $custom_class, $each_row_default_class);
         array_unshift($this->sections,$newSection);

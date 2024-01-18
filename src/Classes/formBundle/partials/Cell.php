@@ -24,6 +24,8 @@ class Cell {
         $this->name = $name;
         $this->id = $id;
 
+//        dd($config);
+
         $this->setType($type);
         $this->setLabel($config['label'] ?? null);
         $this->setDefault($config['default'] ?? null);

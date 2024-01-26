@@ -23,12 +23,12 @@ class linkItem
         $this->title = $title;
         $this->href = $href;
         $this->icon = $icon;
-        if (array_search('style', $config)) $this->custom_style = $config['style'];
-        if (array_search('rel', $config)) $this->rel = $config['rel'];
-        if (array_search('download', $config)) $this->download = $config['download'];
-        if (array_search('type', $config)) $this->type = $config['type'];
-        if (array_search('target', $config)) $this->target = $config['target'];
-        if (array_search('disabled', $config)) $this->disabled = boolval($config['disabled']);
+        if (array_key_exists('style', $config)) $this->custom_style = $config['style'];
+        if (array_key_exists('rel', $config)) $this->rel = $config['rel'];
+        if (array_key_exists('download', $config)) $this->download = $config['download'];
+        if (array_key_exists('type', $config)) $this->type = $config['type'];
+        if (array_key_exists('target', $config)) $this->target = $config['target'];
+        if (array_key_exists('disabled', $config)) $this->disabled = boolval($config['disabled']);
     }
 }
 

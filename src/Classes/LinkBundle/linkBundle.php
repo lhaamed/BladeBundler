@@ -33,13 +33,13 @@ class linkBundle
     public function appendLink(string $title, string $href, string|null $icon = null, array $config = []): void
     {
 
-        $link = new linkItem($title, $href, $icon);
+        $link = new linkItem($title, $href, $icon,$config);
         $this->links[] = $link;
     }
 
     public function prependLink(string $title, string $href, string|null $icon = null, array $config = []): void
     {
-        $link = new linkItem($title, $href, $icon);
+        $link = new linkItem($title, $href, $icon,$config);
         array_unshift($this->links, $link);
     }
 

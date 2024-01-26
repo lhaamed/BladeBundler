@@ -5,7 +5,7 @@
 
                 @if(\BladeBundler\BB::isLink($link))
                     <a href="{{ $link->href }}"
-                       class="btn @isset($linkBundle->each_link_style) {{ $linkBundle->each_link_style }} @endisset">
+                       class="btn @isset($linkBundle->each_link_style) {{ $linkBundle->each_link_style }} @endisset  @isset($link->custom_style) {{ $link->custom_style }} @endisset">
                         <span>{{ $link->title }}</span>
                         @isset($link->icon)
                             @include('fs.fs-icon',['icon' => $link->icon])

@@ -1,9 +1,11 @@
 <?php
 
-namespace BladeBundler\ServiceProviders;
+namespace BladeBundler;
 
-use Illuminate\Support\ServiceProvider;
 use BladeBundler\Services\BladeBundlerService;
+use Illuminate\Support\ServiceProvider;
+use function base_path;
+use function config_path;
 
 class BladeBundlerServiceProvider extends ServiceProvider
 {
@@ -13,25 +15,25 @@ class BladeBundlerServiceProvider extends ServiceProvider
             return new BladeBundlerService;
         });
 
-        $this->mergeConfigFrom(__DIR__ . '\..\config\BladeBundler.php','BladeBundler');
+        $this->mergeConfigFrom(__DIR__ . '/config/BladeBundler.php','BladeBundler');
     }
 
     public function boot()
     {
 //        dd(__DIR__.'\\..\\view');
-        $this->loadViewsFrom(__DIR__.'/../views','BladeBundler');
+        $this->loadViewsFrom(__DIR__.'/views','BladeBundler');
 
 
         $this->publishes([
-            __DIR__ . '/../config/BladeBundler.php' => config_path('BladeBundler.php'),
+            __DIR__ . '/config/BladeBundler.php' => config_path('BladeBundler.php'),
         ],'config');
 
         $this->publishes([
-            __DIR__ . '/../views' => base_path('resources/views/bundler'),
+            __DIR__ . '/views' => base_path('resources/views/bundler'),
         ],'bundler-views');
 
         $this->publishes([
-            __DIR__ . '/../assets' => base_path('public/assets/bundler/js'),
+            __DIR__ . '/assets' => base_path('public/assets/bundler/js'),
         ],'bundler-assets');
     }
 

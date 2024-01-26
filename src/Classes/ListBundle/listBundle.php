@@ -2,7 +2,7 @@
 
 namespace BladeBundler\Classes\ListBundle;
 
-use BladeBundler\Classes\formBundle\searchFormBundle;
+use BladeBundler\Classes\FormBundle\searchFormBundle;
 use BladeBundler\Classes\InitialBundle;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;

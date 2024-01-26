@@ -1,8 +1,8 @@
 <?php
 
-namespace BladeBundler\Classes\formBundle\partials\cells;
+namespace BladeBundler\Classes\FormBundle\partials\cells;
 
-use BladeBundler\Classes\formBundle\partials\Cell;
+use BladeBundler\Classes\FormBundle\partials\Cell;
 
 class emailCell extends Cell{
 

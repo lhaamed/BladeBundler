@@ -10,7 +10,8 @@
         @if(isset($cell->reverse) && $cell->reverse === true) dir="ltr" @endif
         value="@if(old($cell->id) !== null){{ old($cell->id) }}@elseif(isset($cell->default)){{ $cell->default }}@endif"
         @if($cell->required) required @endif
-        @if(isset($cell->disabled) && $cell->disabled) disabled @endif>
+        @if(isset($cell->disabled) && $cell->disabled) disabled @endif
+        autocomplete="new-password">
     @if($cell->show_switch)
         <button type="button" tabindex="-1" style="position: absolute;left: 14px; bottom: 10px;">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">

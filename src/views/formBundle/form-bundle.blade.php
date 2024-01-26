@@ -7,7 +7,7 @@
         @method($formBundle->alter_method)
     @endif
     @foreach($formBundle->sections as $section)
-        @if($section instanceof \BladeBundler\Classes\formBundle\partials\Section)
+        @if($section instanceof \BladeBundler\Classes\FormBundle\partials\Section)
 
 {{--            @dd($section)--}}
             <section
@@ -19,10 +19,10 @@
                 @endisset
                 @foreach($section->rows as $row)
 
-                    @if($row instanceof \BladeBundler\Classes\formBundle\partials\Row)
+                    @if($row instanceof \BladeBundler\Classes\FormBundle\partials\Row)
                         <div class="form-row {{ $section->each_row_default_class }} {{ $row->custom_class }}">
                             @foreach($row->cells as $cell)
-                                @if($cell instanceof \BladeBundler\Classes\formBundle\partials\Cell)
+                                @if($cell instanceof \BladeBundler\Classes\FormBundle\partials\Cell)
                                     @include('BladeBundler::formBundle.components.input-determiner',['cell' => $cell])
                                 @endif
 

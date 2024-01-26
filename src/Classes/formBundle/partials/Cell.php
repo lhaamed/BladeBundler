@@ -1,6 +1,6 @@
 <?php
 
-namespace BladeBundler\Classes\formBundle\partials;
+namespace BladeBundler\Classes\FormBundle\partials;
 
 class Cell {
 

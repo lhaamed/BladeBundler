@@ -10,7 +10,7 @@ Like any other packages in the Packagist you'll need to add service provider and
 
 first, add this as a service provider in the "providers" array:
 ```bash
-  BladeBundler\ServiceProviders\BladeBundlerServiceProvider::class,
+  BladeBundler\BladeBundlerServiceProvider::class,
 ```
 
 

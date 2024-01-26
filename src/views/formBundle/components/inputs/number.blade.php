@@ -8,7 +8,8 @@
            @if(isset($cell->max)) max="{{ $cell->max }}" @endif
            step="{{ $cell->step }}"
            value="@if(isset($cell->default)){{ $cell->default }}@else{{ old($cell->name) }}@endif"
-           @if($cell->required === true) required @endif>
+           @if($cell->required === true) required @endif
+           @if(isset($cell->disabled) && $cell->disabled === true) disabled @endif>
 @endisset
 
 

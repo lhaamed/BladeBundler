@@ -17,5 +17,5 @@
             "email": "lhaamed.business@gmail.com"
         }
     ],
-    "minimum-stability": "dev"
+    "minimum-stability": "stable"
 }

@@ -1,6 +1,7 @@
 {
     "name": "lhaamed/blade-bundler",
     "description": "A super-efficient package to bundle all similar structures for your Laravel blades. Using this package will give you incredible development speed, which is necessary at critical points. You will be able to customize it to any level you want.",
+    "type": "library",
     "require": {
         "laravel/framework": "^10.0",
         "php": "^8.1"
@@ -17,10 +18,7 @@
             "email": "lhaamed.business@gmail.com"
         }
     ],
-    "minimum-stability": "stable",
-    "prefer-stable": true,
     "extra": {
-
         "laravel": {
             "providers": [
                 "lhaamed\\BladeBundler\\BladeBundlerServiceProvider"

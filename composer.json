@@ -17,5 +17,17 @@
             "email": "lhaamed.business@gmail.com"
         }
     ],
-    "minimum-stability": "stable"
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "extra": {
+
+        "laravel": {
+            "providers": [
+                "lhaamed\\BladeBundler\\BladeBundlerServiceProvider"
+            ],
+            "aliases": {
+                "captcha": "lhaamed\\BladeBundler\\BB"
+            }
+        }
+    }
 }

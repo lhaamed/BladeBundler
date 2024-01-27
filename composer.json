@@ -9,7 +9,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "lhaamed\\BladeBundler\\": "src/"
+            "BladeBundler\\": "src/"
         }
     },
     "authors": [
@@ -21,10 +21,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "lhaamed\\BladeBundler\\BladeBundlerServiceProvider"
+                "BladeBundler\\BladeBundlerServiceProvider"
             ],
             "aliases": {
-                "captcha": "lhaamed\\BladeBundler\\BB"
+                "BB": "BladeBundler\\BB"
             }
         }
     }

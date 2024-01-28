@@ -8,7 +8,12 @@ a super efficient package to bundle all similar structures for your Laravel blad
 
 Like any other packages in the Packagist you'll need to add service provider and Facade aliases into your config/app.php using the following lines:
 
-first, add this as a service provider in the "providers" array:
+first of all, you need to run the following command in the root directory of your app in the terminal:
+```bash
+  composer require lhaamed/blade-bundler
+```
+
+then, add this as a service provider in the "providers" array:
 ```bash
   BladeBundler\BladeBundlerServiceProvider::class,
 ```

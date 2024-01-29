@@ -1,13 +1,13 @@
 <?php
 
-namespace BladeBundler\Classes\FormBundle\partials;
+namespace BladeBundler\classes\formBundle\partials;
 
-use BladeBundler\Classes\FormBundle\partials\cells\emailCell;
-use BladeBundler\Classes\FormBundle\partials\cells\numberCell;
-use BladeBundler\Classes\FormBundle\partials\cells\passwordCell;
-use BladeBundler\Classes\FormBundle\partials\cells\telCell;
-use BladeBundler\Classes\FormBundle\partials\cells\textareaCell;
-use BladeBundler\Classes\FormBundle\partials\cells\textCell;
+use BladeBundler\classes\formBundle\partials\cells\emailCell;
+use BladeBundler\classes\formBundle\partials\cells\numberCell;
+use BladeBundler\classes\formBundle\partials\cells\passwordCell;
+use BladeBundler\classes\formBundle\partials\cells\telCell;
+use BladeBundler\classes\formBundle\partials\cells\textareaCell;
+use BladeBundler\classes\formBundle\partials\cells\textCell;
 
 class Row
 {

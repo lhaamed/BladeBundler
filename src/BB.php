@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Facade;
 use JetBrains\PhpStorm\Pure;
-use BladeBundler\Classes\FormBundle\formBundle;
-use BladeBundler\Classes\ListBundle\listBundle;
+use BladeBundler\classes\formBundle\formBundle;
+use BladeBundler\classes\listBundle\listBundle;
 use function request;
 
 class BB extends Facade
@@ -63,22 +63,22 @@ class BB extends Facade
 
     public static function isList(mixed $object): bool
     {
-        return get_class($object) == 'BladeBundler\Classes\ListBundle\listBundle';
+        return get_class($object) == 'BladeBundler\classes\listBundle\ListBundle';
     }
 
     public static function isForm(mixed $object): bool
     {
-        return get_class($object) == 'BladeBundler\Classes\FormBundle\formBundle';
+        return get_class($object) == 'BladeBundler\classes\formBundle\FormBundle';
     }
 
     public static function isLinkBundle(mixed $object): bool
     {
-        return get_class($object) == 'BladeBundler\Classes\LinkBundle\linkBundle';
+        return get_class($object) == 'BladeBundler\classes\linkBundle\LinkBundle';
     }
 
     public static function isLink(mixed $object): bool
     {
-        return get_class($object) == 'BladeBundler\Classes\LinkBundle\partials\linkItem';
+        return get_class($object) == 'BladeBundler\classes\linkBundle\partials\LinkItem';
     }
 
     public static function renderLink(array $data): string

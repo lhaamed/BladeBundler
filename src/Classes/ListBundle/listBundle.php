@@ -1,13 +1,13 @@
 <?php
 
-namespace BladeBundler\Classes\ListBundle;
+namespace BladeBundler\classes\listBundle;
 
-use BladeBundler\Classes\FormBundle\searchFormBundle;
-use BladeBundler\Classes\InitialBundle;
+use BladeBundler\classes\formBundle\searchFormBundle;
+use BladeBundler\classes\InitialBundle;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 
-class listBundle extends InitialBundle
+class ListBundle extends InitialBundle
 {
 
     public array $table = [

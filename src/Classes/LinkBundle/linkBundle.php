@@ -1,10 +1,10 @@
 <?php
 
-namespace BladeBundler\Classes\LinkBundle;
+namespace BladeBundler\classes\linkBundle;
 
-use BladeBundler\Classes\LinkBundle\partials\linkItem;
+use BladeBundler\classes\linkBundle\partials\linkItem;
 
-class linkBundle
+class LinkBundle
 {
 
     public string $each_link_style = 'btn-outline-secondary'; // we just collect class names here

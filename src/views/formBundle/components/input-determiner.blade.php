@@ -1,6 +1,6 @@
-@if($cell instanceof \BladeBundler\Classes\FormBundle\partials\cells\hiddenCell)
+@if($cell instanceof \BladeBundler\classes\formBundle\partials\cells\hiddenCell)
     @include('BladeBundler::formBundle.components.inputs.hidden',['cell' => $cell])
-@elseif($cell instanceof \BladeBundler\Classes\FormBundle\partials\cells\checkboxCell)
+@elseif($cell instanceof \BladeBundler\classes\formBundle\partials\cells\checkboxCell)
     @include('BladeBundler::formBundle.components.inputs.check-box',['cell' => $cell])
 @else
 
@@ -11,23 +11,23 @@
                 @endif</label>
         @endisset
 
-        @if($cell instanceof \BladeBundler\Classes\FormBundle\partials\cells\textCell)
+        @if($cell instanceof \BladeBundler\classes\formBundle\partials\cells\textCell)
             @include('BladeBundler::formBundle.components.inputs.text',['cell' => $cell])
-        @elseif($cell instanceof \BladeBundler\Classes\FormBundle\partials\cells\emailCell)
+        @elseif($cell instanceof \BladeBundler\classes\formBundle\partials\cells\emailCell)
             @include('BladeBundler::formBundle.components.inputs.text',['cell' => $cell])
-        @elseif($cell instanceof \BladeBundler\Classes\FormBundle\partials\cells\passwordCell)
+        @elseif($cell instanceof \BladeBundler\classes\formBundle\partials\cells\passwordCell)
             @include('BladeBundler::formBundle.components.inputs.password',['cell' => $cell])
-        @elseif($cell instanceof \BladeBundler\Classes\FormBundle\partials\cells\numberCell)
+        @elseif($cell instanceof \BladeBundler\classes\formBundle\partials\cells\numberCell)
             @include('BladeBundler::formBundle.components.inputs.number',['cell' => $cell])
-        @elseif($cell instanceof \BladeBundler\Classes\FormBundle\partials\cells\telCell)
+        @elseif($cell instanceof \BladeBundler\classes\formBundle\partials\cells\telCell)
             @include('BladeBundler::formBundle.components.inputs.text',['cell' => $cell])
-        @elseif($cell instanceof \BladeBundler\Classes\FormBundle\partials\cells\colorCell)
+        @elseif($cell instanceof \BladeBundler\classes\formBundle\partials\cells\colorCell)
             @include('BladeBundler::formBundle.components.inputs.color',['cell' => $cell])
-        @elseif($cell instanceof \BladeBundler\Classes\FormBundle\partials\cells\selectCell)
+        @elseif($cell instanceof \BladeBundler\classes\formBundle\partials\cells\selectCell)
             @include('BladeBundler::formBundle.components.inputs.select',['cell' => $cell])
-        @elseif($cell instanceof \BladeBundler\Classes\FormBundle\partials\cells\textareaCell)
+        @elseif($cell instanceof \BladeBundler\classes\formBundle\partials\cells\textareaCell)
             @include('BladeBundler::formBundle.components.inputs.textarea',['cell' => $cell])
-        @elseif($cell instanceof \BladeBundler\Classes\FormBundle\partials\cells\fileCell)
+        @elseif($cell instanceof \BladeBundler\classes\formBundle\partials\cells\fileCell)
             @include('BladeBundler::formBundle.components.inputs.file',['cell' => $cell])
         @endif
         @if ($errors->has($cell->id))

@@ -1,11 +1,11 @@
 <?php
 
-namespace BladeBundler\Classes\FormBundle;
+namespace BladeBundler\classes\formBundle;
 
-use BladeBundler\Classes\FormBundle\partials\Section;
-use BladeBundler\Classes\InitialBundle;
+use BladeBundler\classes\formBundle\partials\Section;
+use BladeBundler\classes\InitialBundle;
 
-class formBundle extends InitialBundle
+class FormBundle extends InitialBundle
 {
 
     public string $method, $action,$alter_method, $custom_html_tags = '', $each_section_default_class = '';

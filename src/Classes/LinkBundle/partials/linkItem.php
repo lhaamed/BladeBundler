@@ -1,10 +1,10 @@
 <?php
 
 
-namespace BladeBundler\Classes\LinkBundle\partials;
+namespace BladeBundler\classes\linkBundle\partials;
 
 
-class linkItem
+class LinkItem
 {
     public string $title;
     public string $href;

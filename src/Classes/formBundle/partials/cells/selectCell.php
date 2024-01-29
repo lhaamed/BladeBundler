@@ -1,8 +1,8 @@
 <?php
 
-namespace BladeBundler\Classes\FormBundle\partials\cells;
+namespace BladeBundler\classes\formBundle\partials\cells;
 
-use BladeBundler\Classes\FormBundle\partials\Cell;
+use BladeBundler\classes\formBundle\partials\Cell;
 
 class selectCell extends Cell{
 

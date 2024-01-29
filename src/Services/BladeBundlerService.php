@@ -1,6 +1,6 @@
 <?php
 
-namespace BladeBundler\Services;
+namespace BladeBundler\services;
 
 class BladeBundlerService
 {

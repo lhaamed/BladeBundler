@@ -2,6 +2,15 @@
 
 namespace BladeBundler;
 
+use BladeBundler\classes\formBundle\partials\Cell;
+use BladeBundler\classes\formBundle\partials\cells\colorCell;
+use BladeBundler\classes\formBundle\partials\cells\emailCell;
+use BladeBundler\classes\formBundle\partials\cells\hiddenCell;
+use BladeBundler\classes\formBundle\partials\cells\numberCell;
+use BladeBundler\classes\formBundle\partials\cells\passwordCell;
+use BladeBundler\classes\formBundle\partials\cells\telCell;
+use BladeBundler\classes\formBundle\partials\cells\textareaCell;
+use BladeBundler\classes\formBundle\partials\cells\textCell;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Facade;
@@ -42,7 +51,7 @@ class BB extends Facade
     }
 
 
-    #[Pure] public static function generateForm(?string $title, string $action,?string $method = 'POST'): formBundle
+    #[Pure] public static function generateForm(?string $title, string $action, ?string $method = 'POST'): formBundle
     {
         return new formBundle($title, $action, $method);
     }
@@ -79,6 +88,31 @@ class BB extends Facade
     public static function isLink(mixed $object): bool
     {
         return get_class($object) == 'BladeBundler\classes\linkBundle\partials\LinkItem';
+    }
+
+
+    public static function isCell(mixed $object, string $type): bool
+    {
+
+        return match ($type) {
+            'text' => $object instanceof textCell,
+            'email' => $object instanceof emailCell,
+            'password' => $object instanceof passwordCell,
+            'number' => $object instanceof numberCell,
+            'tel' => $object instanceof telCell,
+            'textarea' => $object instanceof textareaCell,
+            'color' => $object instanceof colorCell,
+            'hidden' => $object instanceof hiddenCell,
+            default => false,
+        };
+    }
+
+    #[Pure] public static function isCellAny(mixed $object, array $types): bool
+    {
+        foreach ($types as $type) {
+            if (self::isCell($object, $type) == true) return true;
+        }
+        return false;
     }
 
     public static function renderLink(array $data): string

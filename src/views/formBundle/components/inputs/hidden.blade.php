@@ -1,9 +1,10 @@
-@isset($inputObject)
+@isset($cell)
     <input class="form-control"
-           type="{{ $inputObject['type'] }}"
-           name="{{ $inputObject['name'] }}"
-           id="{{ $inputObject['id'] }}"
-           value="{{ $inputObject['default_value'] }}">
+           type="{{ $cell->type }}"
+           id="{{ $cell->id }}"
+           name="{{ $cell->name }}"
+           value="@if(old($cell->id) !== null){{ old($cell->id) }}@elseif(isset($cell->default)){{ $cell->default }}@endif">
 @endisset
+
 
 

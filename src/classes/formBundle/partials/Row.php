@@ -2,7 +2,9 @@
 
 namespace BladeBundler\classes\formBundle\partials;
 
+use BladeBundler\classes\formBundle\partials\cells\colorCell;
 use BladeBundler\classes\formBundle\partials\cells\emailCell;
+use BladeBundler\classes\formBundle\partials\cells\hiddenCell;
 use BladeBundler\classes\formBundle\partials\cells\numberCell;
 use BladeBundler\classes\formBundle\partials\cells\passwordCell;
 use BladeBundler\classes\formBundle\partials\cells\telCell;
@@ -65,6 +67,8 @@ class Row
             'tel' => new telCell($name, $id, $config),
             'textarea' => new textareaCell($name, $id, $config),
             'password' => new passwordCell($name, $id, $config),
+            'hidden' => new hiddenCell($name, $id, $config),
+            'color' => new colorCell($name, $id, $config),
             default => new Cell($type, $name, $id),
         };
     }
@@ -72,11 +76,11 @@ class Row
 
 
 
-    public function appendInput(string $type,string $name,string $id, array $config): static
+    public function appendInput(string $type,string $name,string $id, array $config = []): static
     {
         return $this->appendCell($this->generateCell($type,$name,$id,$config));
     }
-    public function prependInput(string $type,string $name,string $id, array $config): static
+    public function prependInput(string $type,string $name,string $id, array $config = []): static
     {
         return $this->prependCell($this->generateCell($type,$name,$id,$config));
     }

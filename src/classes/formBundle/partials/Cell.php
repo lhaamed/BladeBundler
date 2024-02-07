@@ -42,7 +42,6 @@ class Cell {
     public function setType(string $type)
     {
         if (in_array($type,$this->validTypes)) $this->type = $type;
-
     }
 
     public function setPlaceholder(?string $placeholder = null): void

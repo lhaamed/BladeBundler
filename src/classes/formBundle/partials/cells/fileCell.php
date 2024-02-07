@@ -7,10 +7,16 @@ use BladeBundler\classes\formBundle\partials\Cell;
 class fileCell extends Cell{
 
 
-    public function __construct(string $name, string $id,?string $label = null,?string $default = null)
+    public mixed $accept = null;
+
+    public function __construct(string $name, string $id,array $config)
     {
-        $this->label = $label;
-        $this->default = $default;
-        parent::__construct('input',$name,$id);
+        parent::__construct('file',$name,$id,$config);
+    }
+
+
+    public function setAccept(?string $accept = null): void
+    {
+        if (!is_null($accept)) $this->accept = $accept;
     }
 }

@@ -5,6 +5,7 @@ namespace BladeBundler\services;
 use BladeBundler\classes\formBundle\FormBundle;
 use BladeBundler\classes\formBundle\partials\cells\colorCell;
 use BladeBundler\classes\formBundle\partials\cells\emailCell;
+use BladeBundler\classes\formBundle\partials\cells\fileCell;
 use BladeBundler\classes\formBundle\partials\cells\hiddenCell;
 use BladeBundler\classes\formBundle\partials\cells\numberCell;
 use BladeBundler\classes\formBundle\partials\cells\passwordCell;
@@ -100,6 +101,7 @@ class BladeBundlerService
             'textarea' => $object instanceof textareaCell,
             'color' => $object instanceof colorCell,
             'hidden' => $object instanceof hiddenCell,
+            'file' => $object instanceof fileCell,
             default => false,
         };
     }

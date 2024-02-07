@@ -4,6 +4,7 @@ namespace BladeBundler\classes\formBundle\partials;
 
 use BladeBundler\classes\formBundle\partials\cells\colorCell;
 use BladeBundler\classes\formBundle\partials\cells\emailCell;
+use BladeBundler\classes\formBundle\partials\cells\fileCell;
 use BladeBundler\classes\formBundle\partials\cells\hiddenCell;
 use BladeBundler\classes\formBundle\partials\cells\numberCell;
 use BladeBundler\classes\formBundle\partials\cells\passwordCell;
@@ -69,12 +70,10 @@ class Row
             'password' => new passwordCell($name, $id, $config),
             'hidden' => new hiddenCell($name, $id, $config),
             'color' => new colorCell($name, $id, $config),
+            'file' => new fileCell($name, $id, $config),
             default => new Cell($type, $name, $id),
         };
     }
-
-
-
 
     public function appendInput(string $type,string $name,string $id, array $config = []): static
     {

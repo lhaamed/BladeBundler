@@ -34,7 +34,11 @@ never forget to use the following commands in the terminal because you have chan
   composer du
 ```
 
-## Usage
+## what is ListBundle
+The ListBundle is a Bundle that helps you create the main structure of your lists in a better way using the package principles.
+you can have different lists for every model and any kind of usage. for example, for showing a list of users you can have different types of lists and in each controller, you can call any of them by just changing the function name in the listGenerator function. the advantage of this system is having both Collection base and Paginated base lists. it means you can pass the data as Collection or Paginated Object and based on the type of data the Bundler generates the desired bundle for you. In this release, there is no view for lists by default. don't forget that we are working on making things easier for you not causing troubles in the dev process. By getting dd() from the ListBundle object you'll find out how to show it in your blade file. not having certain view files for lists helps you bind the ListBundle with your theme at any level of complexity.
+
+## how to use ListBundle 
 
 this package will help you to organize generating forms and table lists in your app. so you can have full control over all existing forms and lists in any aspect.
 To have a list you need your $query which could be paginated or not. if you pass the paginated query you'll get the bundle paginated and if you don't it gives the bundle properly.
@@ -80,6 +84,9 @@ public static function defaultListMap(listBundle $listBundle ,LengthAwarePaginat
 
 in this function, you define what are the heads and each cell's exact value. so you have full control over your list in a better way.
 
+
+## what is FormBundle
+The FormBundle is a Bundle that helps you create forms in Bootstrap structure. After creating the Form via the FormGenerator you have to append a new section. In each section, you are allowed to append rows and inside the rows, you can append your cells. each cell contains input and you can see the list of supported inputs in the following:
 
 
 ## License

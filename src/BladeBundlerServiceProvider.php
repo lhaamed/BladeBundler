@@ -9,17 +9,25 @@ use function config_path;
 
 class BladeBundlerServiceProvider extends ServiceProvider
 {
+
+
     public function register()
     {
-        $this->app->bind('BB', function ($app) {
-            return new BladeBundlerService;
-        });
+//        $this->app->singleton('BB', function ($app) {
+//            return BladeBundlerService::getInstance();
+//        });
 
-        $this->mergeConfigFrom(__DIR__ . '/config/BladeBundler.php','BladeBundler');
+        $this->app->singleton('BB', function ($app) {
+            return new BladeBundlerService();
+        });
     }
 
     public function boot()
     {
+
+        $this->mergeConfigFrom(__DIR__ . '/config/BladeBundler.php','BladeBundler');
+
+
 //        dd(__DIR__.'\\..\\view');
         $this->loadViewsFrom(__DIR__.'/views','BladeBundler');
 
@@ -37,8 +45,5 @@ class BladeBundlerServiceProvider extends ServiceProvider
         ],'bundler-assets');
     }
 
-    public function configurePackage($package): void
-    {
-        $package->hasViews();
-    }
+
 }

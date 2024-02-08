@@ -10,18 +10,15 @@ return [
     | BladeBundler Configuration
     |--------------------------------------------------------------------------
     |
-    |   any kind of configurations are declared here.
-    |   hcaptcha    (put your site key & secret key)
-    |   recaptcha   (put your site key & secret key)
-    |   gd
-    |   default_theme in can select light,dark to select custom theme for your validation
+    | there are 2 main configuration for From and List bundles. So you can determine configs individually in each.
     */
 
-    'formBundler' => [
+    'form' => [
         'components'  => [
             'default' => [
                 'text' => [
-                    'class' => textCell::class
+                    'class' => textCell::class,
+                    'blade' => 'BladeBundler::formBundle.components.inputs.text',
                 ],
                 'email',
                 'password',

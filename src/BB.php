@@ -6,6 +6,7 @@ namespace BladeBundler;
 
 use BladeBundler\classes\formBundle\FormBundle;
 use BladeBundler\classes\listBundle\ListBundle;
+use BladeBundler\services\BladeBundlerService;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Facade;
@@ -25,14 +26,15 @@ use Illuminate\Support\Facades\Facade;
  * @method static bool isCellAny(mixed $object, array $types)
  *
  * @method static string renderLink(array $data)
+ * @method static array getBundles()
  *
- * @see \Barryvdh\Debugbar\LaravelDebugbar
  */
 class BB extends Facade
 {
+
     protected static function getFacadeAccessor(): string
     {
-        return 'BB';
+        return BladeBundlerService::class;
     }
 
 }

@@ -3,6 +3,7 @@
 namespace BladeBundler\services;
 
 use BladeBundler\classes\formBundle\FormBundle;
+use BladeBundler\classes\formBundle\partials\Cell;
 use BladeBundler\classes\formBundle\partials\cells\colorCell;
 use BladeBundler\classes\formBundle\partials\cells\emailCell;
 use BladeBundler\classes\formBundle\partials\cells\fileCell;
@@ -17,25 +18,42 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 
-
-
-
 class BladeBundlerService
 {
 
+    public array $bundles = [];
 
-    public static function generateList(Collection|LengthAwarePaginator|null $query, callable $QueryMap): listBundle
+    public function getBundles(): array
     {
-        $listBundle = new listBundle();
-        return self::listGenerator($listBundle, $query, $QueryMap);
+        return $this->bundles;
     }
 
-    public static function regenerateList(listBundle $oldBundle, Collection|LengthAwarePaginator|null $query, callable $QueryMap): listBundle
+    public function getQueryItems(LengthAwarePaginator|Collection $query): array
+    {
+        if ($query instanceof LengthAwarePaginator) {
+            return $query->items();
+        } else {
+            return $query->toArray();
+        }
+    }
+
+
+
+    public function generateList(Collection|LengthAwarePaginator|null $query, callable $QueryMap): listBundle
+    {
+        $listBundle = new listBundle();
+
+        $finalBundle = self::listGenerator($listBundle, $query, $QueryMap);
+        $this->bundles[] = $finalBundle;
+        return $finalBundle;
+    }
+
+    public function regenerateList(listBundle $oldBundle, Collection|LengthAwarePaginator|null $query, callable $QueryMap): listBundle
     {
         return self::listGenerator($oldBundle, $query, $QueryMap);
     }
 
-    private static function listGenerator(listBundle $oldBundle, $query, callable $QueryMap): listBundle
+    private function listGenerator(listBundle $oldBundle, $query, callable $QueryMap): listBundle
     {
         $listBundle = $QueryMap($oldBundle, $query);
         if ($query instanceof LengthAwarePaginator) {
@@ -49,47 +67,37 @@ class BladeBundlerService
     }
 
 
-    public static function generateForm(?string $title, string $action, ?string $method = 'POST'): formBundle
+
+    public function generateForm(?string $title, string $action, ?string $method = 'POST'): formBundle
     {
         return new formBundle($title, $action, $method);
-    }
-
-
-    public static function getQueryItems(LengthAwarePaginator|Collection $query): array
-    {
-        if ($query instanceof LengthAwarePaginator) {
-            return $query->items();
-        } else {
-            return $query->toArray();
-        }
     }
 
 
     // STATUS CHECK FUNCTIONS
 
 
-    public static function isList(mixed $object): bool
+    public function isList(mixed $object): bool
     {
         return get_class($object) == 'BladeBundler\classes\listBundle\ListBundle';
     }
 
-    public static function isForm(mixed $object): bool
+    public function isForm(mixed $object): bool
     {
         return get_class($object) == 'BladeBundler\classes\formBundle\FormBundle';
     }
 
-    public static function isLinkBundle(mixed $object): bool
+    public function isLinkBundle(mixed $object): bool
     {
         return get_class($object) == 'BladeBundler\classes\linkBundle\LinkBundle';
     }
 
-    public static function isLink(mixed $object): bool
+    public function isLink(mixed $object): bool
     {
         return get_class($object) == 'BladeBundler\classes\linkBundle\partials\LinkItem';
     }
 
-
-    public static function isCell(mixed $object, string $type): bool
+    public function isCell(mixed $object, string $type): bool
     {
 
         return match ($type) {
@@ -102,11 +110,12 @@ class BladeBundlerService
             'color' => $object instanceof colorCell,
             'hidden' => $object instanceof hiddenCell,
             'file' => $object instanceof fileCell,
+            'cell' => $object instanceof Cell,
             default => false,
         };
     }
 
-    public static function isCellAny(mixed $object, array $types): bool
+    public function isCellAny(mixed $object, array $types): bool
     {
         foreach ($types as $type) {
             if (self::isCell($object, $type) == true) return true;
@@ -114,7 +123,8 @@ class BladeBundlerService
         return false;
     }
 
-    public static function renderLink(array $data): string
+
+    public function renderLink(array $data): string
     {
         if (isset($data['title'])) $title = $data['title'];
         $icon = $data['icon'];
@@ -124,10 +134,8 @@ class BladeBundlerService
         $target = $data['target'] ?? '_self';
         $rel = $data['rel'] ?? 'nofollow';
 
-
         $finalTitle = $icon ? view('fs.fs-icon', ['icon' => $icon])->render() : $title;
         $finalHref = $href ?? route($route);
-
 
         return "<a href='$finalHref' rel='$rel' target='$target' class='$class'>{$finalTitle}</a>";
     }

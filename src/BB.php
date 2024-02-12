@@ -5,6 +5,7 @@ namespace BladeBundler;
 
 
 use BladeBundler\classes\formBundle\FormBundle;
+use BladeBundler\classes\formBundle\partials\Cell;
 use BladeBundler\classes\listBundle\ListBundle;
 use BladeBundler\services\BladeBundlerService;
 use Illuminate\Database\Eloquent\Collection;
@@ -26,7 +27,9 @@ use Illuminate\Support\Facades\Facade;
  * @method static bool isCellAny(mixed $object, array $types)
  *
  * @method static string renderLink(array $data)
- * @method static array getBundles()
+ * @method static bool isCellDefined(Cell $cell)
+ * @method static bool showFormCell(Cell $cell)
+ * @method static array getFormValidTypes(?string $flag = null)
  *
  */
 class BB extends Facade

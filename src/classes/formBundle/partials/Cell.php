@@ -2,6 +2,8 @@
 
 namespace BladeBundler\classes\formBundle\partials;
 
+use BladeBundler\BB;
+
 class Cell {
 
     public string $name;
@@ -41,7 +43,7 @@ class Cell {
 
     public function setType(string $type)
     {
-        if (in_array($type,$this->validTypes)) $this->type = $type;
+        if (in_array($type,BB::getFormValidTypes('short_name'))) $this->type = $type;
     }
 
     public function setPlaceholder(?string $placeholder = null): void

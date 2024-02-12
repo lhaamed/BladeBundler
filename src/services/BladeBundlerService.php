@@ -14,19 +14,13 @@ use BladeBundler\classes\formBundle\partials\cells\telCell;
 use BladeBundler\classes\formBundle\partials\cells\textareaCell;
 use BladeBundler\classes\formBundle\partials\cells\textCell;
 use BladeBundler\classes\listBundle\ListBundle;
+use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 
 class BladeBundlerService
 {
-
-    public array $bundles = [];
-
-    public function getBundles(): array
-    {
-        return $this->bundles;
-    }
 
     public function getQueryItems(LengthAwarePaginator|Collection $query): array
     {
@@ -36,8 +30,6 @@ class BladeBundlerService
             return $query->toArray();
         }
     }
-
-
 
     public function generateList(Collection|LengthAwarePaginator|null $query, callable $QueryMap): listBundle
     {
@@ -67,13 +59,27 @@ class BladeBundlerService
     }
 
 
-
     public function generateForm(?string $title, string $action, ?string $method = 'POST'): formBundle
     {
         return new formBundle($title, $action, $method);
     }
 
 
+    public function renderLink(array $data): string
+    {
+        if (isset($data['title'])) $title = $data['title'];
+        $icon = $data['icon'];
+        if (isset($data['class'])) $class = $data['class']; else $class = null;
+        if (isset($data['route'])) $route = $data['route'];
+        $href = $data['href'];
+        $target = $data['target'] ?? '_self';
+        $rel = $data['rel'] ?? 'nofollow';
+
+        $finalTitle = $icon ? view('fs.fs-icon', ['icon' => $icon])->render() : $title;
+        $finalHref = $href ?? route($route);
+
+        return "<a href='$finalHref' rel='$rel' target='$target' class='$class'>{$finalTitle}</a>";
+    }
     // STATUS CHECK FUNCTIONS
 
 
@@ -123,20 +129,46 @@ class BladeBundlerService
         return false;
     }
 
-
-    public function renderLink(array $data): string
+    public function getFormValidTypes(?string $flag = null): array
     {
-        if (isset($data['title'])) $title = $data['title'];
-        $icon = $data['icon'];
-        if (isset($data['class'])) $class = $data['class']; else $class = null;
-        if (isset($data['route'])) $route = $data['route'];
-        $href = $data['href'];
-        $target = $data['target'] ?? '_self';
-        $rel = $data['rel'] ?? 'nofollow';
+        $defaultTypes = config('BladeBundler.form.components.default');
+        $customTypes = config('BladeBundler.form.components.custom');
+        $allTypes = array_merge($defaultTypes,$customTypes);
 
-        $finalTitle = $icon ? view('fs.fs-icon', ['icon' => $icon])->render() : $title;
-        $finalHref = $href ?? route($route);
+        if ($flag == 'short_name'){
+            $allTypes = array_merge($defaultTypes,$customTypes);
 
-        return "<a href='$finalHref' rel='$rel' target='$target' class='$class'>{$finalTitle}</a>";
+            return array_map(function ($each){
+                return $each['short_name'];
+            },$allTypes);
+        }elseif ($flag == 'blade'){
+            return array_map(function ($each){
+                return $each['blade'];
+            },$allTypes);
+        }else{
+            return array_keys($allTypes);
+        }
+
     }
+
+
+    public function isCellDefined(Cell $cell): bool
+    {
+        return in_array(get_class($cell),$this->getFormValidTypes());
+    }
+
+    public function getCellConfig(Cell $cell)
+    {
+
+    }
+
+    public function showFormCell(Cell $cell): string
+    {
+
+        if ($this->isCellDefined($cell)){
+            return view($this->getFormValidTypes('blade')[get_class($cell)],['cell' => $cell])->render();
+        }
+    }
+
+
 }

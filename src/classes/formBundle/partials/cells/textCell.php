@@ -8,6 +8,6 @@ class textCell extends Cell{
 
     public function __construct(string $name, string $id,array $config)
     {
-        parent::__construct('input',$name,$id,$config);
+        parent::__construct('text',$name,$id,$config);
     }
 }

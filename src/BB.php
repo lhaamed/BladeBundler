@@ -3,7 +3,6 @@
 namespace BladeBundler;
 
 
-
 use BladeBundler\classes\formBundle\FormBundle;
 use BladeBundler\classes\formBundle\partials\Cell;
 use BladeBundler\classes\listBundle\ListBundle;

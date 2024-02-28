@@ -14,7 +14,6 @@ use BladeBundler\classes\formBundle\partials\cells\telCell;
 use BladeBundler\classes\formBundle\partials\cells\textareaCell;
 use BladeBundler\classes\formBundle\partials\cells\textCell;
 use BladeBundler\classes\listBundle\ListBundle;
-use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 
@@ -80,6 +79,7 @@ class BladeBundlerService
 
         return "<a href='$finalHref' rel='$rel' target='$target' class='$class'>{$finalTitle}</a>";
     }
+
     // STATUS CHECK FUNCTIONS
 
 
@@ -133,19 +133,19 @@ class BladeBundlerService
     {
         $defaultTypes = config('BladeBundler.form.components.default');
         $customTypes = config('BladeBundler.form.components.custom');
-        $allTypes = array_merge($defaultTypes,$customTypes);
+        $allTypes = array_merge($defaultTypes, $customTypes);
 
-        if ($flag == 'short_name'){
-            $allTypes = array_merge($defaultTypes,$customTypes);
+        if ($flag == 'short_name') {
+            $allTypes = array_merge($defaultTypes, $customTypes);
 
-            return array_map(function ($each){
+            return array_map(function ($each) {
                 return $each['short_name'];
-            },$allTypes);
-        }elseif ($flag == 'blade'){
-            return array_map(function ($each){
+            }, $allTypes);
+        } elseif ($flag == 'blade') {
+            return array_map(function ($each) {
                 return $each['blade'];
-            },$allTypes);
-        }else{
+            }, $allTypes);
+        } else {
             return array_keys($allTypes);
         }
 
@@ -154,7 +154,7 @@ class BladeBundlerService
 
     public function isCellDefined(Cell $cell): bool
     {
-        return in_array(get_class($cell),$this->getFormValidTypes());
+        return in_array(get_class($cell), $this->getFormValidTypes());
     }
 
     public function getCellConfig(Cell $cell)
@@ -162,12 +162,13 @@ class BladeBundlerService
 
     }
 
-    public function showFormCell(Cell $cell): string
+    public function showFormCell(Cell $cell): null|string
     {
 
-        if ($this->isCellDefined($cell)){
-            return view($this->getFormValidTypes('blade')[get_class($cell)],['cell' => $cell])->render();
+        if ($this->isCellDefined($cell)) {
+            return view($this->getFormValidTypes('blade')[get_class($cell)], ['cell' => $cell])->render();
         }
+        return null;
     }
 
 

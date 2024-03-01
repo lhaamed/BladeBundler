@@ -16,6 +16,7 @@ use BladeBundler\classes\formBundle\partials\cells\textCell;
 use BladeBundler\classes\listBundle\ListBundle;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\View\View;
 
 
 class BladeBundlerService
@@ -74,7 +75,12 @@ class BladeBundlerService
         $target = $data['target'] ?? '_self';
         $rel = $data['rel'] ?? 'nofollow';
 
-        $finalTitle = $icon ? view('fs.fs-icon', ['icon' => $icon])->render() : $title;
+        if (View::exists('fs.fs-icon')){
+            $finalTitle = $icon ? view('fs.fs-icon', ['icon' => $icon])->render() : $title;
+        }else{
+            $finalTitle = $title;
+        }
+
         $finalHref = $href ?? route($route);
 
         return "<a href='$finalHref' rel='$rel' target='$target' class='$class'>{$finalTitle}</a>";

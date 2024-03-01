@@ -16,7 +16,7 @@ use BladeBundler\classes\formBundle\partials\cells\textCell;
 use BladeBundler\classes\listBundle\ListBundle;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\View\View;
+use Illuminate\Support\Facades\View;
 
 
 class BladeBundlerService

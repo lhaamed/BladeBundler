@@ -1,7 +1,11 @@
 @isset($inputObject)
     <div class="guarantee-code-wrapper">
         <button type="button" class="d-none btn btn-outline-primary fill-from-clipboard-js">
-            @include('theme.sleek.components.fs-icon',['icon' => 'paste'])
+            @if(\Illuminate\Support\Facades\View::exists('fs.fs-icon'))
+                @include('fs.fs-icon',['icon' => 'paste'])
+            @else
+                <span>paste</span>
+            @endif
         </button>
         <div class="fields-wrapper">
             <input type="text" inputmode="numeric" maxlength="4" minlength="4"

@@ -9,7 +9,7 @@
                         <span>{{ $link->title }}</span>
                         @isset($link->icon)
                             @if(\Illuminate\Support\Facades\View::exists('fs.fs-icon'))
-                                @include('fs.fs-icon',['icon' => $link->icon])
+                                @fs($link->icon)
                             @endif
                         @endisset
                     </a>

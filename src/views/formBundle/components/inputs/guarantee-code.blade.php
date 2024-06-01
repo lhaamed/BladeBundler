@@ -1,12 +1,5 @@
 @isset($inputObject)
     <div class="guarantee-code-wrapper">
-        <button type="button" class="d-none btn btn-outline-primary fill-from-clipboard-js">
-            @if(\Illuminate\Support\Facades\View::exists('fs.fs-icon'))
-                @include('fs.fs-icon',['icon' => 'paste'])
-            @else
-                <span>paste</span>
-            @endif
-        </button>
         <div class="fields-wrapper">
             <input type="text" inputmode="numeric" maxlength="4" minlength="4"
                    class="form-control @isset($inputObject['input_custom_class']){{$inputObject['input_custom_class']}} @endisset"

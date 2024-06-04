@@ -29,20 +29,29 @@ class BladeBundlerServiceProvider extends ServiceProvider
 
 
 //        dd(__DIR__.'\\..\\view');
-        $this->loadViewsFrom(__DIR__.'/views','BladeBundler');
 
+
+        // Register the view namespace
+        if (is_dir(resource_path('views/bundler'))) {
+            // If views are published, load from published path
+            $this->loadViewsFrom(resource_path('views/bundler'), 'BladeBundler');
+        } else {
+            // If views are not published, load from package default views
+            $this->loadViewsFrom(__DIR__.'/views', 'BladeBundler');
+        }
 
         $this->publishes([
             __DIR__ . '/config/BladeBundler.php' => config_path('BladeBundler.php'),
-        ],'config');
+        ],['blade-bundler','config','bb:config']);
 
         $this->publishes([
-            __DIR__ . '/views' => base_path('resources/views/bundler'),
-        ],'bundler-views');
+            __DIR__ . '/views' => resource_path('views/bundler'),
+        ],['blade-bundler','views','bb:views']);
+
 
         $this->publishes([
-            __DIR__ . '/assets' => base_path('public/assets/bundler/js'),
-        ],'bundler-assets');
+            __DIR__ . '/assets' => public_path('assets/bundler/js'),
+        ],['blade-bundler','assets','bb:assets']);
     }
 
 

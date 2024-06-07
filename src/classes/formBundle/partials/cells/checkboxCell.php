@@ -8,8 +8,8 @@ class checkboxCell extends Cell{
 
 
 
-    public function __construct(string $name, string $id,?string $label = null,?string $default = null)
+    public function __construct(string $name, string $id, array $config)
     {
-        parent::__construct('input',$name,$id);
+        parent::__construct('select', $name, $id, $config);
     }
 }

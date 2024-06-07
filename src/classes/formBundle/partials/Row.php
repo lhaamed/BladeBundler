@@ -2,6 +2,7 @@
 
 namespace BladeBundler\classes\formBundle\partials;
 
+use BladeBundler\classes\formBundle\partials\cells\checkboxCell;
 use BladeBundler\classes\formBundle\partials\cells\colorCell;
 use BladeBundler\classes\formBundle\partials\cells\emailCell;
 use BladeBundler\classes\formBundle\partials\cells\fileCell;
@@ -63,16 +64,17 @@ class Row
     private function generateCell(string $type,string $name,string $id, array $config): Cell
     {
         return match ($type) {
-            'text' => new textCell($name, $id, $config),
-            'number' => new numberCell($name, $id, $config),
-            'email' => new emailCell($name, $id, $config),
-            'tel' => new telCell($name, $id, $config),
-            'textarea' => new textareaCell($name, $id, $config),
-            'password' => new passwordCell($name, $id, $config),
             'hidden' => new hiddenCell($name, $id, $config),
+            'text' => new textCell($name, $id, $config),
+            'email' => new emailCell($name, $id, $config),
+            'textarea' => new textareaCell($name, $id, $config),
+            'tel' => new telCell($name, $id, $config),
+            'password' => new passwordCell($name, $id, $config),
+            'number' => new numberCell($name, $id, $config),
             'color' => new colorCell($name, $id, $config),
             'file' => new fileCell($name, $id, $config),
             'select' => new selectCell($name, $id, $config),
+            'checkbox' => new checkboxCell($name, $id, $config),
             default => new Cell($type, $name, $id),
         };
     }

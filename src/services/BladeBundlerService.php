@@ -4,6 +4,7 @@ namespace BladeBundler\services;
 
 use BladeBundler\classes\formBundle\FormBundle;
 use BladeBundler\classes\formBundle\partials\Cell;
+use BladeBundler\classes\formBundle\partials\cells\checkboxCell;
 use BladeBundler\classes\formBundle\partials\cells\colorCell;
 use BladeBundler\classes\formBundle\partials\cells\emailCell;
 use BladeBundler\classes\formBundle\partials\cells\fileCell;
@@ -124,7 +125,7 @@ class BladeBundlerService
             'color' => $object instanceof colorCell,
             'file' => $object instanceof fileCell,
             'select' => $object instanceof selectCell,
-
+            'checkbox' => $object instanceof checkboxCell,
             'cell' => $object instanceof Cell,
             default => false,
         };

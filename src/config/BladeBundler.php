@@ -2,6 +2,7 @@
 
 use BladeBundler\Classes\formBundle\FormBundle;
 
+use BladeBundler\classes\formBundle\partials\cells\checkboxCell;
 use BladeBundler\classes\formBundle\partials\cells\colorCell;
 use BladeBundler\classes\formBundle\partials\cells\emailCell;
 use BladeBundler\classes\formBundle\partials\cells\fileCell;
@@ -29,7 +30,6 @@ return [
         'class' => FormBundle::class,
         'components'  => [
             'default' => [
-
                 hiddenCell::class => [
                     'short_name' => 'hidden',
                     'blade' => 'BladeBundler::formBundle.components.inputs.hidden',
@@ -69,6 +69,10 @@ return [
                 selectCell::class => [
                     'short_name' => 'select',
                     'blade' => 'BladeBundler::formBundle.components.inputs.select'
+                ],
+                checkboxCell::class => [
+                    'short_name' => 'checkbox',
+                    'blade' => 'BladeBundler::formBundle.components.inputs.check-box'
                 ],
             ],
             'custom' => []

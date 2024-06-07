@@ -1,11 +1,10 @@
-@isset($inputObject)
-    <label class="control control-checkbox">
-        <span>{{ $cell['label'] }}</span>
-        <input type="checkbox" @if(isset($cell['checked']) && $cell['checked'] === true) checked @endif
-        id="{{ $inputObject['id'] }}"
-               name="{{ $inputObject['name'] }}">
-        <div class="control-indicator"></div>
-    </label>
+@isset($cell)
+    <div class="form-check mt-4 pt-3 px-2">
+        <input type="checkbox" @if(isset($cell->default)) checked @endif
+        id="{{ $cell->id }}" name="{{ $cell->name }}">
+        <label class="form-check-label mx-2" for="{{ $cell->id }}">{{ $cell->label }}</label>
+    </div>
+
 @endisset
 
 

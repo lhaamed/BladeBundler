@@ -10,6 +10,7 @@ use BladeBundler\classes\formBundle\partials\cells\fileCell;
 use BladeBundler\classes\formBundle\partials\cells\hiddenCell;
 use BladeBundler\classes\formBundle\partials\cells\numberCell;
 use BladeBundler\classes\formBundle\partials\cells\passwordCell;
+use BladeBundler\classes\formBundle\partials\cells\selectCell;
 use BladeBundler\classes\formBundle\partials\cells\telCell;
 use BladeBundler\classes\formBundle\partials\cells\textareaCell;
 use BladeBundler\classes\formBundle\partials\cells\textCell;
@@ -113,15 +114,17 @@ class BladeBundlerService
     {
 
         return match ($type) {
+            'hidden' => $object instanceof hiddenCell,
             'text' => $object instanceof textCell,
             'email' => $object instanceof emailCell,
+            'textarea' => $object instanceof textareaCell,
+            'tel' => $object instanceof telCell,
             'password' => $object instanceof passwordCell,
             'number' => $object instanceof numberCell,
-            'tel' => $object instanceof telCell,
-            'textarea' => $object instanceof textareaCell,
             'color' => $object instanceof colorCell,
-            'hidden' => $object instanceof hiddenCell,
             'file' => $object instanceof fileCell,
+            'select' => $object instanceof selectCell,
+
             'cell' => $object instanceof Cell,
             default => false,
         };

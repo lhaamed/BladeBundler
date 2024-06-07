@@ -4,12 +4,13 @@ namespace BladeBundler\classes\formBundle\partials;
 
 use BladeBundler\BB;
 
-class Cell {
+class Cell
+{
 
     public string $name;
     public string $id;
     public string $type;
-    public array $validTypes = ['hidden','input','number','password','tel','email','color','textarea','select','checkbox','file'];
+    public array $validTypes = ['hidden', 'text', 'email', 'textarea', 'tel', 'password', 'number', 'color', 'file', 'select','checkbox'];
 
     public ?string $label = null;
     public mixed $default = null;
@@ -20,8 +21,7 @@ class Cell {
     public bool $reverse = false;
 
 
-
-    function __construct(string $type,string $name, string $id,array $config = [])
+    function __construct(string $type, string $name, string $id, array $config = [])
     {
         $this->name = $name;
         $this->id = $id;
@@ -43,7 +43,7 @@ class Cell {
 
     public function setType(string $type)
     {
-        if (in_array($type,BB::getFormValidTypes('short_name'))) $this->type = $type;
+        if (in_array($type, BB::getFormValidTypes('short_name'))) $this->type = $type;
     }
 
     public function setPlaceholder(?string $placeholder = null): void
@@ -74,12 +74,36 @@ class Cell {
     {
         if (!is_null($required)) $this->required = !!$required;
     }
+
     public function setDisabled(mixed $disabled = null): void
     {
         if (!is_null($disabled)) $this->disabled = !!$disabled;
     }
+
     public function setReverse(mixed $reverse = null): void
     {
         if (!is_null($reverse)) $this->reverse = !!$reverse;
+    }
+
+
+//    bool checkers
+    public function isRequired(): bool
+    {
+        return $this->required;
+    }
+
+    public function isDisabled(): bool
+    {
+        return $this->disabled;
+    }
+
+    public function isReversed(): bool
+    {
+        return $this->reverse;
+    }
+
+    public function hasDefault(): bool
+    {
+        return isset($this->default);
     }
 }

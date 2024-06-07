@@ -1,5 +1,4 @@
-document.onload = function (){
-    console.clear();
+window.onload = function (){
     let allPasswordSwitcherElements = document.querySelectorAll('.password-switcher-bbjs');
     for (const eachPass of allPasswordSwitcherElements) {
         eachPass.nextElementSibling.addEventListener('click', function (e) {

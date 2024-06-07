@@ -22,7 +22,7 @@
                     @foreach($section->rows as $row)
 
                         @if($row instanceof \BladeBundler\classes\formBundle\partials\Row)
-                            <div class="form-row {{ $section->each_row_default_class }} {{ $row->custom_class }}">
+                            <div class="form-row row {{ $section->each_row_default_class }} {{ $row->custom_class }}">
                                 @foreach($row->cells as $cell)
                                     @if($cell instanceof \BladeBundler\classes\formBundle\partials\Cell)
                                         @include('BladeBundler::formBundle.components.input-determiner',['cell' => $cell])

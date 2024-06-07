@@ -3,8 +3,7 @@
            type="{{ $cell->type }}"
            id="{{ $cell->id }}"
            name="{{ $cell->name }}"
-           accept="{{ $cell->accept }}"
-           onchange="previewData(event)">
+           accept="{{ $cell->accept }}">
 @endisset
 
 

@@ -12,24 +12,22 @@ class passwordCell extends Cell {
     public function __construct(string $name, string $id,array $config)
     {
         parent::__construct('password',$name,$id,$config);
-        $this->setShowSwitch($config['show_switch'] ?? null);
+        $this->setShowSwitch($config['show_switch'] ?? false);
     }
 
-    /**
-     * @return bool
-     */
-    public function isShowSwitch(): bool
-    {
-        return $this->show_switch;
-    }
 
     /**
      * @param bool $show_switch
      */
-    public function setShowSwitch(?bool $show_switch = null): void
+    public function setShowSwitch(bool $show_switch): void
     {
-        if (!is_null($show_switch)) $this->show_switch = $show_switch;
+        $this->show_switch = $show_switch;
     }
 
 
+//    bool checkers
+    public function shouldShowSwitch(): bool
+    {
+        return $this->show_switch;
+    }
 }

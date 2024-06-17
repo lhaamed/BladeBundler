@@ -15,7 +15,7 @@
                 <section
                     class="d-flex flex-column my-4 px-4 @isset($section->title) titled-section @endisset {{ $formBundle->each_section_default_class }} {{ $section->custom_class }}">
                     @isset($section->title)
-                        <div class="col-12 pl-0 pb-4" style="transform: translateX(12px)">
+                        <div class="section-title col-12 pl-0 pb-4" style="transform: translateX(12px)">
                             <h5 class="d-inline bg-white px-2">{!! $section->title !!}</h5>
                         </div>
                     @endisset

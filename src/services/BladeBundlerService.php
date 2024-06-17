@@ -11,6 +11,7 @@ use BladeBundler\classes\formBundle\partials\cells\fileCell;
 use BladeBundler\classes\formBundle\partials\cells\hiddenCell;
 use BladeBundler\classes\formBundle\partials\cells\numberCell;
 use BladeBundler\classes\formBundle\partials\cells\passwordCell;
+use BladeBundler\classes\formBundle\partials\cells\pictureCell;
 use BladeBundler\classes\formBundle\partials\cells\selectCell;
 use BladeBundler\classes\formBundle\partials\cells\telCell;
 use BladeBundler\classes\formBundle\partials\cells\textareaCell;
@@ -124,6 +125,7 @@ class BladeBundlerService
             'number' => $object instanceof numberCell,
             'color' => $object instanceof colorCell,
             'file' => $object instanceof fileCell,
+            'picture' => $object instanceof pictureCell,
             'select' => $object instanceof selectCell,
             'checkbox' => $object instanceof checkboxCell,
             'cell' => $object instanceof Cell,
@@ -174,7 +176,6 @@ class BladeBundlerService
 
     public function showFormCell(Cell $cell): null|string
     {
-
         if ($this->isCellDefined($cell)) {
             return view($this->getFormValidTypes('blade')[get_class($cell)], ['cell' => $cell])->render();
         }

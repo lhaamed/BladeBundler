@@ -9,6 +9,7 @@ use BladeBundler\classes\formBundle\partials\cells\fileCell;
 use BladeBundler\classes\formBundle\partials\cells\hiddenCell;
 use BladeBundler\classes\formBundle\partials\cells\numberCell;
 use BladeBundler\classes\formBundle\partials\cells\passwordCell;
+use BladeBundler\classes\formBundle\partials\cells\pictureCell;
 use BladeBundler\classes\formBundle\partials\cells\selectCell;
 use BladeBundler\classes\formBundle\partials\cells\telCell;
 use BladeBundler\classes\formBundle\partials\cells\textareaCell;
@@ -65,6 +66,10 @@ return [
                 fileCell::class => [
                     'short_name' => 'file',
                     'blade' => 'BladeBundler::formBundle.components.inputs.file',
+                ],
+                pictureCell::class => [
+                    'short_name' => 'picture',
+                    'blade' => 'BladeBundler::formBundle.components.inputs.picture',
                 ],
                 selectCell::class => [
                     'short_name' => 'select',

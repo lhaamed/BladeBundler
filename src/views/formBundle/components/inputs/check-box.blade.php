@@ -4,7 +4,6 @@
         id="{{ $cell->id }}" name="{{ $cell->name }}">
         <label class="form-check-label mx-2" for="{{ $cell->id }}">{{ $cell->label }}</label>
     </div>
-
 @endisset
 
 

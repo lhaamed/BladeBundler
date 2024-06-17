@@ -10,7 +10,7 @@ class Cell
     public string $name;
     public string $id;
     public string $type;
-    public array $validTypes = ['hidden', 'text', 'email', 'textarea', 'tel', 'password', 'number', 'color', 'file', 'select','checkbox'];
+    public array $validTypes = ['hidden', 'text', 'email', 'textarea', 'tel', 'password', 'number', 'color', 'file', 'select', 'checkbox'];
 
     public ?string $label = null;
     public mixed $default = null;

@@ -9,6 +9,7 @@ use BladeBundler\classes\formBundle\partials\cells\fileCell;
 use BladeBundler\classes\formBundle\partials\cells\hiddenCell;
 use BladeBundler\classes\formBundle\partials\cells\numberCell;
 use BladeBundler\classes\formBundle\partials\cells\passwordCell;
+use BladeBundler\classes\formBundle\partials\cells\pictureCell;
 use BladeBundler\classes\formBundle\partials\cells\selectCell;
 use BladeBundler\classes\formBundle\partials\cells\telCell;
 use BladeBundler\classes\formBundle\partials\cells\textareaCell;
@@ -73,6 +74,7 @@ class Row
             'number' => new numberCell($name, $id, $config),
             'color' => new colorCell($name, $id, $config),
             'file' => new fileCell($name, $id, $config),
+            'picture' => new pictureCell($name, $id, $config),
             'select' => new selectCell($name, $id, $config),
             'checkbox' => new checkboxCell($name, $id, $config),
             default => new Cell($type, $name, $id),

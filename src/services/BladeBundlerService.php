@@ -176,6 +176,9 @@ class BladeBundlerService
 
     public function showFormCell(Cell $cell): null|string
     {
+        if ($cell->type == 'checkbox'){
+            dd('salam');
+        }
         if ($this->isCellDefined($cell)) {
             return view($this->getFormValidTypes('blade')[get_class($cell)], ['cell' => $cell])->render();
         }

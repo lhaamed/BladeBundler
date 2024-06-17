@@ -52,3 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+
+/*======== 7. MULTIPLE SELECT ========*/
+$(".js-example-basic-multiple").select2();

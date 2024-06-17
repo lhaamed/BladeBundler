@@ -1,5 +1,5 @@
 @isset($cell)
-    <select class="form-control @isset($cell->class){{$cell->class}} @endisset"
+    <select class="form-control @if($cell->isMultiple()) multiple-select2 @endif @isset($cell->class){{$cell->class}} @endisset"
             id="{{ $cell->id }}"
             name="{{ $cell->name }}"
             dir="ltr"

@@ -57,7 +57,7 @@ class Cell
      */
     public function setDefault(mixed $default = null): void
     {
-        $this->default = $default;
+        $this->default = strval($default);
     }
 
     public function setLabel(?string $label = null): void

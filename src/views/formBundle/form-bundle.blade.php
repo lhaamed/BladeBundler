@@ -1,6 +1,6 @@
 
 @if(\BladeBundler\BB::isForm($formBundle))
-    <form action="{{ $formBundle->action }}"
+    <form action="{{ $formBundle->action }}" @if($formBundle->support_file) enctype="multipart/form-data" @endif
           method="{{ $formBundle->method }}" {!! $formBundle->custom_html_tags !!}>
         @if($formBundle->hasCSRF)
             @csrf

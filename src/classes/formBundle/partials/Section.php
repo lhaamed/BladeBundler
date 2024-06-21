@@ -6,6 +6,7 @@ class Section {
 
     public ?string $title;
     public ?string $custom_class = null;
+    public ?string $custom_id = null;
     public ?string $each_row_default_class = null;
     public array $rows = [];
 

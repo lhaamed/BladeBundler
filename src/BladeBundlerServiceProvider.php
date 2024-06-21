@@ -48,10 +48,10 @@ class BladeBundlerServiceProvider extends ServiceProvider
             __DIR__ . '/views' => resource_path('views/bundler'),
         ],['blade-bundler','views','bb:views']);
 
-
         $this->publishes([
             __DIR__ . '/assets' => public_path('assets/bundler/js'),
         ],['blade-bundler','assets','bb:assets']);
+
     }
 
 

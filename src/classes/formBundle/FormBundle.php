@@ -9,6 +9,7 @@ class FormBundle extends InitialBundle
 {
 
     public string $method, $action, $alter_method, $custom_html_tags = '', $each_section_default_class = '';
+    public string $boundary_class = 'col-12';
     public bool $hasCSRF = true;
     public bool $support_file = true;
     public array $sections = [];
@@ -35,8 +36,15 @@ class FormBundle extends InitialBundle
 
     function setMode($mode): static
     {
-        if (in_array($mode, $this->modes))
+        if (in_array($mode, $this->modes)){
+
+            if ($mode == 'normal'){
+                $this->boundary_class = 'col-12';
+            }elseif ($mode == 'single-col'){
+                $this->boundary_class = 'col-xxl-5 col-xl-6 col-md-8 col-12 mx-auto';
+            }
             $this->mode = $mode;
+        }
         return $this;
     }
 

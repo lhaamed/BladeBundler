@@ -16,6 +16,7 @@ class Cell
     public mixed $default = null;
     public string $placeholder = '';
     public string $class = '';
+    public string $input_class = '';
     public bool $required = false;
     public bool $disabled = false;
     public bool $reverse = false;
@@ -33,6 +34,7 @@ class Cell
         $this->setDefault($config['default'] ?? null);
         $this->setPlaceholder($config['placeholder'] ?? null);
         $this->setClass($config['class'] ?? null);
+        $this->setInputClass($config['input_class'] ?? null);
         $this->setRequired($config['required'] ?? null);
         $this->setDisabled($config['disabled'] ?? null);
         $this->setReverse($config['reverse'] ?? null);
@@ -72,6 +74,11 @@ class Cell
     public function setClass(?string $class = null): void
     {
         if (!is_null($class)) $this->class = $class;
+    }
+
+    public function setInputClass(?string $input_class = null): void
+    {
+        if (!is_null($input_class)) $this->input_class = $input_class;
     }
 
     public function setRequired(mixed $required = null): void

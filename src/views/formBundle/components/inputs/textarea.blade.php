@@ -1,6 +1,6 @@
 @isset($cell)
     <textarea
-        class="form-control"
+        class="form-control {{ $cell->input_class }}"
         name="{{ $cell->name }}"
         id="{{ $cell->id }}"
         placeholder="{{ $cell->placeholder }}"

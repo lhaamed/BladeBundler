@@ -79,19 +79,18 @@ class BladeBundlerService
         $target = $data['target'] ?? '_self';
         $rel = $data['rel'] ?? 'nofollow';
 
-        if (class_exists("lhaamed\\LaraFs\\LaraFsService") && !is_null($icon)){
-            $renderedIcon = FS::render($icon);
-        }else{
-            $renderedIcon = null;
-        }
-
-        if (!is_null($title)){
-            $finalTitle = "<span class='mx-1'>{$title}</span>";
-        } else $finalTitle = null;
-
         $finalHref = $href ?? route($route);
 
-        return "<a href='$finalHref' rel='$rel' target='$target' class='$class'>{$renderedIcon}{$finalTitle}</a>";
+        if (class_exists("lhaamed\\LaraFs\\LaraFsService") && !is_null($icon)){
+            $renderedIcon = FS::render($icon);
+            return "<a href='$finalHref' rel='$rel' target='$target' class='$class' title='$title'>{$renderedIcon}</a>";
+
+        }else{
+            return "<a href='$finalHref' rel='$rel' target='$target' class='$class'>{$title}</a>";
+        }
+
+
+
     }
 
     // STATUS CHECK FUNCTIONS

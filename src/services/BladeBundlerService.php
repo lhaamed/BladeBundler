@@ -20,6 +20,7 @@ use BladeBundler\classes\listBundle\ListBundle;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\View;
+use lhaamed\LaraFs\FS;
 
 
 class BladeBundlerService
@@ -70,23 +71,27 @@ class BladeBundlerService
 
     public function renderLink(array $data): string
     {
-        if (isset($data['title'])) $title = $data['title'];
-        $icon = $data['icon'];
+        $title = $data['title'] ?? null;
+        $icon = $data['icon'] ?? null;
         if (isset($data['class'])) $class = $data['class']; else $class = null;
         if (isset($data['route'])) $route = $data['route'];
         $href = $data['href'];
         $target = $data['target'] ?? '_self';
         $rel = $data['rel'] ?? 'nofollow';
 
-        if (View::exists('fs.fs-icon')){
-            $finalTitle = $icon ? view('fs.fs-icon', ['icon' => $icon])->render() : $title;
+        if (class_exists("lhaamed\\LaraFs\\LaraFsService") && !is_null($icon)){
+            $renderedIcon = FS::render($icon);
         }else{
-            $finalTitle = $title;
+            $renderedIcon = null;
         }
+
+        if (!is_null($title)){
+            $finalTitle = "<span class='mx-1'>{$title}</span>";
+        } else $finalTitle = null;
 
         $finalHref = $href ?? route($route);
 
-        return "<a href='$finalHref' rel='$rel' target='$target' class='$class'>{$finalTitle}</a>";
+        return "<a href='$finalHref' rel='$rel' target='$target' class='$class'>{$renderedIcon}{$finalTitle}</a>";
     }
 
     // STATUS CHECK FUNCTIONS

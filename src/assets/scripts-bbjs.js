@@ -1,8 +1,4 @@
-
-
-
 document.addEventListener('DOMContentLoaded', function() {
-
 
     let allPasswordSwitcherElements = document.querySelectorAll('.password-switcher-bbjs');
     for (const eachPass of allPasswordSwitcherElements) {
@@ -18,8 +14,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         })
     }
-
-
 
     // Function to handle the image preview
     function previewImage(event, previewId, defaultPreviewSrc) {
@@ -51,8 +45,9 @@ document.addEventListener('DOMContentLoaded', function() {
             previewImage(event, previewId, defaultPreviewSrc);
         });
     });
+
+    /*======== 7. MULTIPLE SELECT ========*/
+    $(".js-example-basic-multiple").select2();
 });
 
 
-/*======== 7. MULTIPLE SELECT ========*/
-$(".js-example-basic-multiple").select2();

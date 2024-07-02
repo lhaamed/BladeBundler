@@ -40,7 +40,7 @@ class Row
         return $this;
     }
 
-    public function appendHTML($HTML, $cell_custom_class = 'col-xxl-2 col-lg-2 col-md-12 mb-2'): static
+    public function appendHTML($HTML, $cell_custom_class = 'col-xxl-2 col-lg-2 col-md-12'): static
     {
         $this->cells[] = [
             'cell_custom_class' => $cell_custom_class,

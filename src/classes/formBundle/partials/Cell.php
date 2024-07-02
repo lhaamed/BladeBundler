@@ -11,7 +11,7 @@ class Cell
     public string $id;
     public string $type;
     public array $validTypes = ['hidden', 'text', 'email', 'textarea', 'tel', 'password', 'number', 'color', 'file', 'select', 'checkbox'];
-
+    public array $hints = [];
     public ?string $label = null;
     public mixed $default = null;
     public string $placeholder = '';
@@ -27,8 +27,6 @@ class Cell
         $this->name = $name;
         $this->id = $id;
 
-//        dd($config);
-
         $this->setType($type);
         $this->setLabel($config['label'] ?? null);
         $this->setDefault($config['default'] ?? null);
@@ -38,6 +36,8 @@ class Cell
         $this->setRequired($config['required'] ?? null);
         $this->setDisabled($config['disabled'] ?? null);
         $this->setReverse($config['reverse'] ?? null);
+
+        if (array_key_exists('hints', $config)) $this->setHints($config['hints']);
     }
 
     // SETTERS
@@ -96,6 +96,28 @@ class Cell
         if (!is_null($reverse)) $this->reverse = !!$reverse;
     }
 
+    public function setHints(array $hints)
+    {
+        $hintTypes = ['success', 'danger', 'danger', 'info', 'primary', 'secondary'];
+
+        $validatedHints = [];
+        foreach ($hints as $key => $hint) {
+
+            if (is_string($hint)) {
+                $validatedHints[] = [
+                    'type' => 'secondary',
+                    'content' => $hint
+                ];
+            } elseif (is_array($hint)) {
+                if (!in_array($hint['type'], $hintTypes)) {
+                    $hint['type'] = 'secondary';
+                }
+                $validatedHints[] = $hint;
+            }
+        }
+        $this->hints = $validatedHints;
+    }
+
 
 //    bool checkers
     public function isRequired(): bool
@@ -116,5 +138,10 @@ class Cell
     public function hasDefault(): bool
     {
         return isset($this->default);
+    }
+
+    public function hasHints(): bool
+    {
+        return !!count($this->hints);
     }
 }

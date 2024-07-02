@@ -32,14 +32,14 @@ class Section {
         $this->title = null;
     }
 
-    function appendRow(string|null $each_cell_default_class = 'col-xxl-3 col-xl-4 col-lg-6 col-md-12 mb-2'): Row
+    function appendRow(string|null $each_cell_default_class = 'col-xxl-3 col-xl-4 col-lg-6 col-md-12'): Row
     {
         $newRow = new Row($each_cell_default_class);
         $this->rows[] = $newRow;
         return $newRow;
     }
 
-    function prependRow(string $each_cell_default_class = 'col-xxl-3 col-xl-4 col-lg-6 col-md-12 mb-2'): Row
+    function prependRow(string $each_cell_default_class = 'col-xxl-3 col-xl-4 col-lg-6 col-md-12'): Row
     {
         $newRow = new Row($each_cell_default_class);
         array_unshift($this->rows,$newRow);

@@ -16,7 +16,10 @@
         @endif
 
         @if($errors->has($cell->id))
-            <span class="form-text" role="alert">{{ $errors->first($cell->id) }}</span>
+
+            <div class="mt-2 mb-2" style="font-size: .86rem">
+                <span class="d-block form-text text-danger px-2" role="alert">{{ $errors->first($cell->id) }}</span>
+            </div>
         @elseif($cell->hasHints())
             <div class="mt-2 mb-2" style="font-size: .86rem">
                 @foreach($cell->hints as $hint)

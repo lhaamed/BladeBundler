@@ -98,7 +98,7 @@ class Cell
 
     public function setHints(array $hints)
     {
-        $hintTypes = ['success', 'danger', 'danger', 'info', 'primary', 'secondary'];
+        $hintTypes = ['success', 'warning', 'danger', 'info', 'primary', 'secondary'];
 
         $validatedHints = [];
         foreach ($hints as $key => $hint) {

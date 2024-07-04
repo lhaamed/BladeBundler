@@ -9,12 +9,14 @@ class selectCell extends Cell
 {
     public array $list = [];
     public bool $is_multiple = false;
+    public bool $is_addable = false;
 
     public function __construct(string $name, string $id, array $config)
     {
         parent::__construct('select', $name, $id, $config);
         $this->setList($config['list']);
         $this->setIsMultiple($config['is_multiple'] ?? false);
+        $this->setIsAddable($config['is_addable'] ?? false);
     }
 
     public function setList($list)
@@ -25,6 +27,10 @@ class selectCell extends Cell
     public function setIsMultiple(bool $value)
     {
         $this->is_multiple = $value;
+    }
+    public function setIsAddable(bool $value)
+    {
+        $this->is_addable = $value;
     }
 
     public function isMultiple(): bool
@@ -49,5 +55,10 @@ class selectCell extends Cell
         } elseif (gettype($this->default) == 'array') {
             return in_array($key, $this->default);
         } else return false;
+    }
+
+    public function isAddable(): bool
+    {
+        return $this->is_addable;
     }
 }

@@ -1,10 +1,20 @@
+
+@if($cell->isMultiple())
+
+    @if($cell->isAddable())
+        @php $class = "multiple-addable-select2";  @endphp
+    @else
+        @php $class = "multiple-select2";  @endphp
+    @endif
+@endif
 @isset($cell)
-    <select class="form-control @if($cell->isMultiple()) multiple-select2 @endif @isset($cell->class){{$cell->class}} @endisset"
+    <select class="form-control {{$class ?? null}} @isset($cell->class){{$cell->class}} @endisset"
             id="{{ $cell->id }}"
             name="{{ $cell->name }}"
             dir="ltr"
             @if($cell->isRequired()) required @endif
             @if($cell->isDisabled()) disabled @endif
+            @if($cell->isAddable()) tags: true @endif
             @if($cell->isMultiple()) multiple @endif>
         @if(!$cell->isMultiple())
             <option

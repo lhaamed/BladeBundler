@@ -17,16 +17,16 @@
 
         @if($errors->has($cell->id))
 
-            <div class="mt-2 mb-2" style="font-size: .86rem">
+            <div class="feedback-wrapper mt-2 mb-2 ps-3" style="font-size: .86rem">
                 <span class="d-block form-text text-danger px-2" role="alert">{{ $errors->first($cell->id) }}</span>
             </div>
         @elseif($cell->hasHints())
-            <div class="mt-2 mb-2" style="font-size: .86rem">
+            <ol class="hint-wrapper styled mt-2 mb-2 ps-3" style="font-size: .86rem">
                 @foreach($cell->hints as $hint)
-                    <span class="d-block form-text text-{{$hint['type']}} px-2"
-                          role="alert">{!! $hint['content'] !!}</span>
+                    <li class="form-text text-{{$hint['type']}}"
+                          role="alert">{!! $hint['content'] !!}</li>
                 @endforeach
-            </div>
+            </ol>
         @endif
     </div>
 @endif

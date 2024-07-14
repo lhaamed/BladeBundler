@@ -1,8 +1,8 @@
 <?php
 
-namespace BladeBundler;
+namespace lhaamed\BladeBundler;
 
-use BladeBundler\services\BladeBundlerService;
+use lhaamed\BladeBundler\services\BladeBundlerService;
 use Illuminate\Support\ServiceProvider;
 use function base_path;
 use function config_path;

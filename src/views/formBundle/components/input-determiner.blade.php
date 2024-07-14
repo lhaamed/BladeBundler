@@ -1,6 +1,6 @@
-@if(\BladeBundler\BB::isCell($cell,'hidden'))
+@if(\lhaamed\BladeBundler\BB::isCell($cell,'hidden'))
     @include('BladeBundler::formBundle.components.inputs.hidden',['cell' => $cell])
-@elseif(\BladeBundler\BB::isCell($cell,'checkbox'))
+@elseif(\lhaamed\BladeBundler\BB::isCell($cell,'checkbox'))
     <div class="{{ $cell->class }} px-1 @isset($row) {{ $row->each_cell_default_class }} @endisset">
         @include('BladeBundler::formBundle.components.inputs.check-box',['cell' => $cell])
     </div>
@@ -11,8 +11,8 @@
             <label for="{{ $cell->id }}" class="mb-1 mx-3 fw-semibold">{{ $cell->label }} @if($cell->isRequired())<span
                     class="text-danger">*</span>@endif</label>
         @endisset
-        @if(\BladeBundler\BB::isCellDefined($cell))
-            {!! \BladeBundler\BB::showFormCell($cell) !!}
+        @if(\lhaamed\BladeBundler\BB::isCellDefined($cell))
+            {!! \lhaamed\BladeBundler\BB::showFormCell($cell) !!}
         @endif
 
         @if($errors->has($cell->id))

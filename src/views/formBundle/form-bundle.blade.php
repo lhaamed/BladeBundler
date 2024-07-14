@@ -1,7 +1,6 @@
-
-@if(\BladeBundler\BB::isForm($formBundle))
+@if(\lhaamed\BladeBundler\BB::isForm($formBundle))
     <form action="{{ $formBundle->action }}" @if($formBundle->support_file) enctype="multipart/form-data" @endif
-          method="{{ $formBundle->method }}" {!! $formBundle->custom_html_tags !!}>
+    method="{{ $formBundle->method }}" {!! $formBundle->custom_html_tags !!}>
         @if($formBundle->hasCSRF)
             @csrf
         @endif
@@ -9,11 +8,11 @@
             @method($formBundle->alter_method)
         @endif
         @foreach($formBundle->sections as $section)
-            @if($section instanceof \BladeBundler\classes\formBundle\partials\Section)
+            @if($section instanceof \lhaamed\BladeBundler\classes\formBundle\partials\Section)
 
                 {{--            @dd($section)--}}
                 <section
-                    class="d-flex flex-column my-4 px-4 @isset($section->title) titled-section @endisset {{ $formBundle->each_section_default_class }} {{ $section->custom_class }}">
+                        class="d-flex flex-column my-4 px-4 @isset($section->title) titled-section @endisset {{ $formBundle->each_section_default_class }} {{ $section->custom_class }}">
                     @isset($section->title)
                         <div class="section-title col-12 pl-0 pb-4" style="transform: translateX(12px)">
                             <h5 class="d-inline bg-white px-2">{!! $section->title !!}</h5>
@@ -21,10 +20,10 @@
                     @endisset
                     @foreach($section->rows as $row)
 
-                        @if($row instanceof \BladeBundler\classes\formBundle\partials\Row)
+                        @if($row instanceof \lhaamed\BladeBundler\classes\formBundle\partials\Row)
                             <div class="form-row row mb-2 {{ $section->each_row_default_class }} {{ $row->custom_class }}">
                                 @foreach($row->cells as $cell)
-                                    @if($cell instanceof \BladeBundler\classes\formBundle\partials\Cell)
+                                    @if($cell instanceof \lhaamed\BladeBundler\classes\formBundle\partials\Cell)
                                         @include('BladeBundler::formBundle.components.input-determiner',['cell' => $cell])
                                     @endif
 

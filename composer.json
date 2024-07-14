@@ -9,7 +9,7 @@
     },
     "autoload": {
         "psr-4": {
-            "BladeBundler\\": "src/"
+            "lhaamed\\BladeBundler\\": "src/"
         }
     },
     "authors": [

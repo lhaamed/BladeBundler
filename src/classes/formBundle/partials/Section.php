@@ -1,6 +1,6 @@
 <?php
 
-namespace BladeBundler\classes\formBundle\partials;
+namespace lhaamed\BladeBundler\classes\formBundle\partials;
 
 class Section {
 

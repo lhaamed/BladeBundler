@@ -1,4 +1,4 @@
-@if(\BladeBundler\BB::isList($listBundle))
+@if(\lhaamed\BladeBundler\BB::isList($listBundle))
     <table class="table table-responsive table-bordered table-hover">
         <thead class="table-dark">
         <tr>

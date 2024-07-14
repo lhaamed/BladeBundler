@@ -1,11 +1,11 @@
 <?php
 
-namespace BladeBundler\classes\formBundle;
+namespace lhaamed\BladeBundler\classes\formBundle;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 use JetBrains\PhpStorm\Pure;
-use BladeBundler\classes\InitialBundle;
+use lhaamed\BladeBundler\classes\InitialBundle;
 
 class SearchFormBundle extends formBundle
 {

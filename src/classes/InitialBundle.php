@@ -2,7 +2,8 @@
 
 namespace lhaamed\BladeBundler\classes;
 
-use lhaamed\BladeBundler\classes\linkBundle\linkBundle;
+
+use lhaamed\BladeBundler\classes\linkBundle\LinkBundle;
 
 class InitialBundle  {
 
@@ -11,7 +12,7 @@ class InitialBundle  {
 
     public function __construct(?string $title = null){
         if (!is_null($title)) $this->title = $title;
-        $this->links = new linkBundle('btn-sm');
+        $this->links = new LinkBundle('btn-sm');
 
         $this->links->prependLink('بازگشت', 'javascript:history.back()', 'chevron-left');
     }

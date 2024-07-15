@@ -1,7 +1,7 @@
 <?php
 
 
-namespace lhaamed\BladeBundler\classes\linkBundle\partials;
+namespace BladeBundler\classes\linkBundle\partials;
 
 
 class LinkItem

@@ -1,12 +1,12 @@
 <?php
 
-namespace lhaamed\BladeBundler;
+namespace BladeBundler;
 
 
-use lhaamed\BladeBundler\classes\formBundle\FormBundle;
-use lhaamed\BladeBundler\classes\formBundle\partials\Cell;
-use lhaamed\BladeBundler\classes\listBundle\ListBundle;
-use lhaamed\BladeBundler\services\BladeBundlerService;
+use BladeBundler\classes\formBundle\FormBundle;
+use BladeBundler\classes\formBundle\partials\Cell;
+use BladeBundler\classes\listBundle\ListBundle;
+use BladeBundler\services\BladeBundlerService;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Facade;

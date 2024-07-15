@@ -1,8 +1,8 @@
 <?php
 
-namespace lhaamed\BladeBundler\classes\formBundle\partials;
+namespace BladeBundler\classes\formBundle\partials;
 
-use lhaamed\BladeBundler\BB;
+use BladeBundler\BB;
 
 class Cell
 {

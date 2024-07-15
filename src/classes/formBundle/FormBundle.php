@@ -1,9 +1,9 @@
 <?php
 
-namespace lhaamed\BladeBundler\classes\formBundle;
+namespace BladeBundler\classes\formBundle;
 
-use lhaamed\BladeBundler\classes\formBundle\partials\Section;
-use lhaamed\BladeBundler\classes\InitialBundle;
+use BladeBundler\classes\formBundle\partials\Section;
+use BladeBundler\classes\InitialBundle;
 
 class FormBundle extends InitialBundle
 {

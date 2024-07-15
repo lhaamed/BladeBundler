@@ -3,7 +3,7 @@
         @if(count($linkBundle->links))
             @foreach($linkBundle->links as $link)
 
-                @if(\lhaamed\BladeBundler\BB::isLink($link))
+                @if(\BladeBundler\BB::isLink($link))
                     <a href="{{ $link->href }}"
                        class="btn @isset($linkBundle->each_link_style) {{ $linkBundle->each_link_style }}@endisset  @isset($link->custom_style) {{ $link->custom_style }} @endisset">
                         <span>{{ $link->title }}</span>

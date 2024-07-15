@@ -1,22 +1,22 @@
 <?php
 
-namespace lhaamed\BladeBundler\services;
+namespace BladeBundler\services;
 
-use lhaamed\BladeBundler\classes\formBundle\FormBundle;
-use lhaamed\BladeBundler\classes\formBundle\partials\Cell;
-use lhaamed\BladeBundler\classes\formBundle\partials\cells\checkboxCell;
-use lhaamed\BladeBundler\classes\formBundle\partials\cells\colorCell;
-use lhaamed\BladeBundler\classes\formBundle\partials\cells\emailCell;
-use lhaamed\BladeBundler\classes\formBundle\partials\cells\fileCell;
-use lhaamed\BladeBundler\classes\formBundle\partials\cells\hiddenCell;
-use lhaamed\BladeBundler\classes\formBundle\partials\cells\numberCell;
-use lhaamed\BladeBundler\classes\formBundle\partials\cells\passwordCell;
-use lhaamed\BladeBundler\classes\formBundle\partials\cells\pictureCell;
-use lhaamed\BladeBundler\classes\formBundle\partials\cells\selectCell;
-use lhaamed\BladeBundler\classes\formBundle\partials\cells\telCell;
-use lhaamed\BladeBundler\classes\formBundle\partials\cells\textareaCell;
-use lhaamed\BladeBundler\classes\formBundle\partials\cells\textCell;
-use lhaamed\BladeBundler\classes\listBundle\ListBundle;
+use BladeBundler\classes\formBundle\FormBundle;
+use BladeBundler\classes\formBundle\partials\Cell;
+use BladeBundler\classes\formBundle\partials\cells\checkboxCell;
+use BladeBundler\classes\formBundle\partials\cells\colorCell;
+use BladeBundler\classes\formBundle\partials\cells\emailCell;
+use BladeBundler\classes\formBundle\partials\cells\fileCell;
+use BladeBundler\classes\formBundle\partials\cells\hiddenCell;
+use BladeBundler\classes\formBundle\partials\cells\numberCell;
+use BladeBundler\classes\formBundle\partials\cells\passwordCell;
+use BladeBundler\classes\formBundle\partials\cells\pictureCell;
+use BladeBundler\classes\formBundle\partials\cells\selectCell;
+use BladeBundler\classes\formBundle\partials\cells\telCell;
+use BladeBundler\classes\formBundle\partials\cells\textareaCell;
+use BladeBundler\classes\formBundle\partials\cells\textCell;
+use BladeBundler\classes\listBundle\ListBundle;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 use lhaamed\LaraFs\FS;
@@ -97,22 +97,22 @@ class BladeBundlerService
 
     public function isList(mixed $object): bool
     {
-        return get_class($object) == 'lhaamed\BladeBundler\classes\listBundle\ListBundle';
+        return get_class($object) == 'BladeBundler\classes\listBundle\ListBundle';
     }
 
     public function isForm(mixed $object): bool
     {
-        return get_class($object) == 'lhaamed\BladeBundler\classes\formBundle\FormBundle';
+        return get_class($object) == 'BladeBundler\classes\formBundle\FormBundle';
     }
 
     public function isLinkBundle(mixed $object): bool
     {
-        return get_class($object) == 'lhaamed\BladeBundler\classes\linkBundle\LinkBundle';
+        return get_class($object) == 'BladeBundler\classes\linkBundle\LinkBundle';
     }
 
     public function isLink(mixed $object): bool
     {
-        return get_class($object) == 'lhaamed\BladeBundler\classes\linkBundle\partials\LinkItem';
+        return get_class($object) == 'BladeBundler\classes\linkBundle\partials\LinkItem';
     }
 
     public function isCell(mixed $object, string $type): bool

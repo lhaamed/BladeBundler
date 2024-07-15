@@ -1,8 +1,8 @@
 <?php
 
-namespace lhaamed\BladeBundler\classes\formBundle\partials\cells;
+namespace BladeBundler\classes\formBundle\partials\cells;
 
-use lhaamed\BladeBundler\classes\formBundle\partials\Cell;
+use BladeBundler\classes\formBundle\partials\Cell;
 use JetBrains\PhpStorm\Pure;
 
 class selectCell extends Cell

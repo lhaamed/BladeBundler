@@ -1,4 +1,4 @@
-@if(\lhaamed\BladeBundler\BB::isForm($formBundle))
+@if(\BladeBundler\BB::isForm($formBundle))
     <form action="{{ $formBundle->action }}" @if($formBundle->support_file) enctype="multipart/form-data" @endif
     method="{{ $formBundle->method }}" {!! $formBundle->custom_html_tags !!}>
         @if($formBundle->hasCSRF)
@@ -8,7 +8,7 @@
             @method($formBundle->alter_method)
         @endif
         @foreach($formBundle->sections as $section)
-            @if($section instanceof \lhaamed\BladeBundler\classes\formBundle\partials\Section)
+            @if($section instanceof \BladeBundler\classes\formBundle\partials\Section)
 
                 {{--            @dd($section)--}}
                 <section
@@ -20,10 +20,10 @@
                     @endisset
                     @foreach($section->rows as $row)
 
-                        @if($row instanceof \lhaamed\BladeBundler\classes\formBundle\partials\Row)
+                        @if($row instanceof \BladeBundler\classes\formBundle\partials\Row)
                             <div class="form-row row mb-2 {{ $section->each_row_default_class }} {{ $row->custom_class }}">
                                 @foreach($row->cells as $cell)
-                                    @if($cell instanceof \lhaamed\BladeBundler\classes\formBundle\partials\Cell)
+                                    @if($cell instanceof \BladeBundler\classes\formBundle\partials\Cell)
                                         @include('BladeBundler::formBundle.components.input-determiner',['cell' => $cell])
                                     @endif
 

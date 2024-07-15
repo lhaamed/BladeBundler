@@ -1,9 +1,9 @@
 <?php
 
-namespace lhaamed\BladeBundler\classes;
+namespace BladeBundler\classes;
 
 
-use lhaamed\BladeBundler\classes\linkBundle\LinkBundle;
+use BladeBundler\classes\linkBundle\LinkBundle;
 
 class InitialBundle  {
 

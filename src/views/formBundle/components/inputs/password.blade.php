@@ -12,7 +12,7 @@
             value="@if(old($cell->id) !== null){{ old($cell->id) }}@elseif($cell->hasDefault()){{ $cell->default }}@endif"
             @if($cell->isRequired()) required @endif
             @if($cell->isDisabled()) disabled @endif
-            autocomplete="new-password">
+            autocomplete="false">
         @if($cell->shouldShowSwitch())
             <button type="button" tabindex="-1" style="position: absolute;left: 10px; top: 6px;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">

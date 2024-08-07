@@ -38,8 +38,8 @@
 
             @else
 
-                <nav class="tab-navigator mb-5">
-                    <div class="nav nav-pills gap-2" id="tab-navigator" role="tablist">
+                <nav class="tab-navigator mb-5 mx-2">
+                    <div class="nav nav-pills gap-2 pb-3" id="tab-navigator" role="tablist">
                         @foreach($formBundle->tabs as $key => $tab)
                             @if($tab instanceof \BladeBundler\classes\formBundle\partials\Tab)
                                 <button class="nav-link @if(!$key) active @endif" id="{{ $tab->unique_id }}-tab" data-bs-toggle="tab" data-bs-target="#{{ $tab->unique_id }}"

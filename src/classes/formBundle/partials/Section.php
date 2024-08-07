@@ -10,7 +10,7 @@ class Section {
     public ?string $each_row_default_class = null;
     public array $rows = [];
 
-    function __construct(?string $title, ?string $custom_class, ?string $each_row_default_class)
+    function __construct(?string $title = null, ?string $custom_class = null, ?string $each_row_default_class = null)
     {
         $this->setTitle($title);
         $this->custom_class = $custom_class;
@@ -24,11 +24,13 @@ class Section {
         return $this;
     }
 
-    function setTitle($title){
+    function setTitle($title): void
+    {
         $this->title = $title;
     }
 
-    function removeTitle(){
+    function removeTitle(): void
+    {
         $this->title = null;
     }
 

@@ -3,6 +3,7 @@
 namespace BladeBundler\classes\formBundle;
 
 use BladeBundler\classes\formBundle\partials\Section;
+use BladeBundler\classes\formBundle\partials\Tab;
 use BladeBundler\classes\InitialBundle;
 
 class FormBundle extends InitialBundle
@@ -12,7 +13,7 @@ class FormBundle extends InitialBundle
     public string $boundary_class = 'col-12';
     public bool $hasCSRF = true;
     public bool $support_file = true;
-    public array $sections = [];
+    public array $tabs = [];
     public array $submit_button = [
         'custom_class' => '',
         'title' => 'ثبت و ذخیره'
@@ -76,39 +77,39 @@ class FormBundle extends InitialBundle
         $this->submit_button['custom_class'] = $custom_class ?? '';
     }
 
-    public function addCSRF()
+    public function addCSRF(): void
     {
         $this->hasCSRF = true;
     }
 
-    public function removeCSRF()
+    public function removeCSRF(): void
     {
         $this->hasCSRF = false;
     }
 
-    public function addFileSupport()
+    public function addFileSupport(): void
     {
         $this->support_file = true;
     }
 
-    public function removeFileSupport()
+    public function removeFileSupport(): void
     {
         $this->support_file = false;
     }
 
 
-    public function appendSection($name = null, $custom_class = null, $each_row_default_class = null): Section
+    public function appendTab(string $title,string $unique_id, ?string $custom_class = null, ?string $each_section_default_class = null): Tab
     {
-        $newSection = new Section($name, $custom_class, $each_row_default_class);
-        $this->sections[] = $newSection;
-        return $newSection;
+        $newTab = new Tab($title,$unique_id,$custom_class,$each_section_default_class);
+        $this->tabs[] = $newTab;
+        return $newTab;
     }
 
-    public function prependSection($name = null, $custom_class = null, $each_row_default_class = null): Section
+    public function prependTab(string $title,string $unique_id, ?string $custom_class, ?string $each_section_default_class): Tab
     {
-        $newSection = new Section($name, $custom_class, $each_row_default_class);
-        array_unshift($this->sections, $newSection);
-        return $newSection;
+        $newTab = new Tab($title,$unique_id,$custom_class,$each_section_default_class);
+        array_unshift($this->tabs, $newTab);
+        return $newTab;
     }
 
 }

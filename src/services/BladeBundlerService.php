@@ -13,6 +13,7 @@ use BladeBundler\classes\formBundle\partials\cells\numberCell;
 use BladeBundler\classes\formBundle\partials\cells\passwordCell;
 use BladeBundler\classes\formBundle\partials\cells\pictureCell;
 use BladeBundler\classes\formBundle\partials\cells\selectCell;
+use BladeBundler\classes\formBundle\partials\cells\switchCell;
 use BladeBundler\classes\formBundle\partials\cells\telCell;
 use BladeBundler\classes\formBundle\partials\cells\textareaCell;
 use BladeBundler\classes\formBundle\partials\cells\textCell;
@@ -130,6 +131,7 @@ class BladeBundlerService
             'file' => $object instanceof fileCell,
             'picture' => $object instanceof pictureCell,
             'select' => $object instanceof selectCell,
+            'switch' => $object instanceof switchCell,
             'checkbox' => $object instanceof checkboxCell,
             'cell' => $object instanceof Cell,
             default => false,
@@ -179,9 +181,6 @@ class BladeBundlerService
 
     public function showFormCell(Cell $cell): null|string
     {
-        if ($cell->type == 'checkbox'){
-            dd('salam');
-        }
         if ($this->isCellDefined($cell)) {
             return view($this->getFormValidTypes('blade')[get_class($cell)], ['cell' => $cell])->render();
         }

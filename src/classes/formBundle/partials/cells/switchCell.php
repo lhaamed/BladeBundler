@@ -2,16 +2,16 @@
 
 namespace BladeBundler\classes\formBundle\partials\cells;
 
-use BladeBundler\classes\formBundle\partials\Cell;
 
-class checkboxCell extends Cell{
+class switchCell extends checkboxCell
+{
 
     public string $value;
     public string|null $show_label = null;
 
     public function __construct(string $name, string $id, array $config)
     {
-        parent::__construct('checkbox', $name, $id, $config);
+        parent::__construct($name, $id, $config);
         $this->setShowLabel($config['show_label'] ?? null);
         $this->setValue($config['value']);
     }
@@ -25,4 +25,5 @@ class checkboxCell extends Cell{
     {
         $this->show_label = $show_label;
     }
+
 }

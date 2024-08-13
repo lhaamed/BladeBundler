@@ -11,6 +11,7 @@ use BladeBundler\classes\formBundle\partials\cells\numberCell;
 use BladeBundler\classes\formBundle\partials\cells\passwordCell;
 use BladeBundler\classes\formBundle\partials\cells\pictureCell;
 use BladeBundler\classes\formBundle\partials\cells\selectCell;
+use BladeBundler\classes\formBundle\partials\cells\switchCell;
 use BladeBundler\classes\formBundle\partials\cells\telCell;
 use BladeBundler\classes\formBundle\partials\cells\textareaCell;
 use BladeBundler\classes\formBundle\partials\cells\textCell;
@@ -27,7 +28,6 @@ return [
     */
 
     'form' => [
-
         'class' => FormBundle::class,
         'components'  => [
             'default' => [
@@ -78,6 +78,10 @@ return [
                 checkboxCell::class => [
                     'short_name' => 'checkbox',
                     'blade' => 'BladeBundler::formBundle.components.inputs.check-box'
+                ],
+                switchCell::class => [
+                    'short_name' => 'switch',
+                    'blade' => 'BladeBundler::formBundle.components.inputs.switch'
                 ],
             ],
             'custom' => []

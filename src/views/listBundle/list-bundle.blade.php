@@ -15,7 +15,7 @@
                         @if(gettype($recordItem) == 'array')
                             <td @if(isset($recordItem['td_custom_class'])) class="{{ $recordItem['td_custom_class'] }}" @endif
                             @if(isset($recordItem['td_custom_HTML_tag'])) {!! $recordItem['td_custom_HTML_tag'] !!} @endif>
-                                <div class="td-wrapper">
+                                <div class="td-wrapper @if($key == 'actions') nowrap @endif">
                                     @if($key == 'actions')
                                         @foreach($recordItem as $eachAction)
                                             {!! $eachAction !!}

@@ -37,7 +37,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Attach change event listener to each file input
     fileInputs.forEach(function(input) {
-        console.log('salam');
         const previewId = input.previousElementSibling.id;
         const defaultPreviewSrc = input.previousElementSibling.src;
 

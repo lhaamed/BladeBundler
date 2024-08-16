@@ -118,8 +118,14 @@ class BladeBundlerService
 
     public function isCell(mixed $object, string $type): bool
     {
+        $all_valid_cells = $this->getFormValidTypes('short_name');
 
-        return match ($type) {
+        if (in_array($type,$all_valid_cells)){
+            $type_index = array_search($type,$all_valid_cells);
+            return $object instanceof $type_index;
+        }
+        return false;
+        /*return match ($type) {
             'hidden' => $object instanceof hiddenCell,
             'text' => $object instanceof textCell,
             'email' => $object instanceof emailCell,
@@ -135,7 +141,7 @@ class BladeBundlerService
             'checkbox' => $object instanceof checkboxCell,
             'cell' => $object instanceof Cell,
             default => false,
-        };
+        };*/
     }
 
     public function isCellAny(mixed $object, array $types): bool

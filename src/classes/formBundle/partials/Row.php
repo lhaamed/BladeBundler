@@ -2,6 +2,7 @@
 
 namespace BladeBundler\classes\formBundle\partials;
 
+use BladeBundler\BB;
 use BladeBundler\classes\formBundle\partials\cells\checkboxCell;
 use BladeBundler\classes\formBundle\partials\cells\colorCell;
 use BladeBundler\classes\formBundle\partials\cells\emailCell;
@@ -65,7 +66,13 @@ class Row
 
     private function generateCell(string $type,string $name,string $id, array $config): Cell
     {
-        return match ($type) {
+        $all_valid_cells = BB::getFormValidTypes('short_name');
+
+        if (in_array($type,$all_valid_cells)){
+            $type_cell = array_search($type,$all_valid_cells);
+            return new $type_cell($name, $id, $config);
+        }else return new Cell($type, $name, $id);
+        /*return match ($type) {
             'hidden' => new hiddenCell($name, $id, $config),
             'text' => new textCell($name, $id, $config),
             'email' => new emailCell($name, $id, $config),
@@ -80,7 +87,7 @@ class Row
             'switch' => new switchCell($name, $id, $config),
             'checkbox' => new checkboxCell($name, $id, $config),
             default => new Cell($type, $name, $id),
-        };
+        };*/
     }
 
     public function appendInput(string $type,string $name,string $id, array $config = []): static

@@ -27,9 +27,7 @@ class BladeBundlerServiceProvider extends ServiceProvider
 
         $this->mergeConfigFrom(__DIR__ . '/config/BladeBundler.php','BladeBundler');
 
-
 //        dd(__DIR__.'\\..\\view');
-
 
         // Register the view namespace
         if (is_dir(resource_path('views/bundler'))) {

@@ -21,7 +21,9 @@
                                             {!! $eachAction !!}
                                         @endforeach
                                     @else
-                                        {!! $recordItem['content'] !!}
+                                        @foreach($recordItem as $each_item)
+                                            {!! $each_item !!}
+                                        @endforeach
                                     @endif
                                 </div>
                             </td>

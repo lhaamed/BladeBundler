@@ -11,7 +11,7 @@
                 @foreach($formBundle->tabs[0]->sections as $section)
                     @if($section instanceof \BladeBundler\classes\formBundle\partials\Section)
                         <section
-                            class="d-flex flex-column mt-5 mb-2 @isset($section->title) titled-section @endisset {{ $formBundle->each_section_default_class }} {{ $section->custom_class }}">
+                            class="d-flex flex-column mx-2 @isset($section->title) titled-section @endisset {{ $formBundle->each_section_default_class }} {{ $section->custom_class }}">
                             @isset($section->title)
                                 <div class="section-title col-12 pl-0 pb-4" style="transform: translateX(12px)">
                                     <h5 class="d-inline bg-white px-2">{!! $section->title !!}</h5>
@@ -52,7 +52,7 @@
                                 @foreach($tab->sections as $section)
                                     @if($section instanceof \BladeBundler\classes\formBundle\partials\Section)
                                         <section
-                                            class="d-flex flex-column @isset($section->title) titled-section @endisset {{ $formBundle->each_section_default_class }} {{ $section->custom_class }}">
+                                            class="d-flex flex-column mx-2 @isset($section->title) titled-section @endisset {{ $formBundle->each_section_default_class }} {{ $section->custom_class }}">
                                             @isset($section->title)
                                                 <div class="section-title col-12 pl-0 pb-4" style="transform: translateX(12px)">
                                                     <h5 class="d-inline bg-white px-2">{!! $section->title !!}</h5>

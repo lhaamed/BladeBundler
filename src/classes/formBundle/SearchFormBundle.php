@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\URL;
 use JetBrains\PhpStorm\Pure;
 use BladeBundler\classes\InitialBundle;
 
-class SearchFormBundle extends formBundle
+class SearchFormBundle extends FormBundle
 {
 
     public array $submit_button = [

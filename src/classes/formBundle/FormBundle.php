@@ -8,7 +8,6 @@ use BladeBundler\classes\InitialBundle;
 
 class FormBundle extends InitialBundle
 {
-
     public string $method, $action, $alter_method, $custom_html_tags = '', $each_section_default_class = '';
     public string $boundary_class = 'col-12';
     public bool $hasCSRF = true;
@@ -21,7 +20,7 @@ class FormBundle extends InitialBundle
     public string $mode = 'normal';
     private array $modes = ['normal', 'single-col'];
 
-    public function __construct(?string $title, string $action, string|null $method = 'POST')
+    public function __construct(string $title, string $action, string|null $method = 'POST')
     {
         parent::__construct($title);
         $this->setAction($action);

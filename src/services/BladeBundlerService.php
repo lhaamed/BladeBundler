@@ -4,19 +4,7 @@ namespace BladeBundler\services;
 
 use BladeBundler\classes\formBundle\FormBundle;
 use BladeBundler\classes\formBundle\partials\Cell;
-use BladeBundler\classes\formBundle\partials\cells\checkboxCell;
-use BladeBundler\classes\formBundle\partials\cells\colorCell;
-use BladeBundler\classes\formBundle\partials\cells\emailCell;
-use BladeBundler\classes\formBundle\partials\cells\fileCell;
-use BladeBundler\classes\formBundle\partials\cells\hiddenCell;
-use BladeBundler\classes\formBundle\partials\cells\numberCell;
-use BladeBundler\classes\formBundle\partials\cells\passwordCell;
-use BladeBundler\classes\formBundle\partials\cells\pictureCell;
-use BladeBundler\classes\formBundle\partials\cells\selectCell;
-use BladeBundler\classes\formBundle\partials\cells\switchCell;
-use BladeBundler\classes\formBundle\partials\cells\telCell;
-use BladeBundler\classes\formBundle\partials\cells\textareaCell;
-use BladeBundler\classes\formBundle\partials\cells\textCell;
+use BladeBundler\classes\formBundle\SearchFormBundle;
 use BladeBundler\classes\listBundle\ListBundle;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -37,7 +25,7 @@ class BladeBundlerService
 
     public function generateList(Collection|LengthAwarePaginator|null $query, callable $QueryMap): listBundle
     {
-        $listBundle = new listBundle();
+        $listBundle = new ListBundle();
 
         $finalBundle = self::listGenerator($listBundle, $query, $QueryMap);
 //        $this->bundles[] = $finalBundle;
@@ -63,9 +51,14 @@ class BladeBundlerService
     }
 
 
-    public function generateForm(?string $title, string $action, ?string $method = 'POST'): formBundle
+    public function generateForm(string $title, string $action, string $method = 'POST'): formBundle
     {
-        return new formBundle($title, $action, $method);
+        return new FormBundle($title, $action, $method);
+    }
+
+    public function generateSearchForm(string $title, string|null $action = null, string $method = 'GET'): SearchFormBundle
+    {
+        return new SearchFormBundle($title, $action, $method);
     }
 
 
@@ -81,20 +74,17 @@ class BladeBundlerService
 
         $finalHref = $href ?? route($route);
 
-        if (class_exists("lhaamed\\LaraFs\\LaraFsService") && !is_null($icon)){
+        if (class_exists("lhaamed\\LaraFs\\LaraFsService") && !is_null($icon)) {
             $renderedIcon = FS::render($icon);
             return "<a href='$finalHref' rel='$rel' target='$target' class='$class' title='$title'>{$renderedIcon}</a>";
-
-        }else{
+        } else {
             return "<a href='$finalHref' rel='$rel' target='$target' class='$class'>{$title}</a>";
         }
-
 
 
     }
 
     // STATUS CHECK FUNCTIONS
-
 
     public function isList(mixed $object): bool
     {
@@ -103,7 +93,11 @@ class BladeBundlerService
 
     public function isForm(mixed $object): bool
     {
-        return get_class($object) == 'BladeBundler\classes\formBundle\FormBundle';
+        return $object instanceof FormBundle;
+    }
+    public function isSearchForm(mixed $object): bool
+    {
+        return $object instanceof SearchFormBundle;
     }
 
     public function isLinkBundle(mixed $object): bool
@@ -120,8 +114,8 @@ class BladeBundlerService
     {
         $all_valid_cells = $this->getFormValidTypes('short_name');
 
-        if (in_array($type,$all_valid_cells)){
-            $type_index = array_search($type,$all_valid_cells);
+        if (in_array($type, $all_valid_cells)) {
+            $type_index = array_search($type, $all_valid_cells);
             return $object instanceof $type_index;
         }
         return false;
@@ -152,7 +146,7 @@ class BladeBundlerService
         return false;
     }
 
-    public function getFormValidTypes(?string $flag = null): array
+    public function getFormValidTypes(string $flag = null): array
     {
         $defaultTypes = config('BladeBundler.form.components.default');
         $customTypes = config('BladeBundler.form.components.custom');
@@ -192,6 +186,5 @@ class BladeBundlerService
         }
         return null;
     }
-
 
 }

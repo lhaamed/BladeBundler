@@ -1,20 +1,17 @@
 @if(\BladeBundler\BB::isForm($formBundle))
     <form action="{{ $formBundle->action }}" @if($formBundle->support_file) enctype="multipart/form-data" @endif
-    method="{{ $formBundle->method }}" {!! $formBundle->custom_html_tags !!}>
+    method="{{ $formBundle->method }}" {!! $formBundle->custom_html_tags !!} class="@if(\BladeBundler\BB::isSearchForm($formBundle)) search-bundler @else form-bundler @endif">
         @if($formBundle->hasCSRF)
             @csrf
         @endif
         @if(isset($formBundle->alter_method))
             @method($formBundle->alter_method)
         @endif
-
-
             @if(count($formBundle->tabs) == 1)
-
                 @foreach($formBundle->tabs[0]->sections as $section)
                     @if($section instanceof \BladeBundler\classes\formBundle\partials\Section)
                         <section
-                            class="d-flex flex-column my-4 px-4 @isset($section->title) titled-section @endisset {{ $formBundle->each_section_default_class }} {{ $section->custom_class }}">
+                            class="d-flex flex-column mt-5 mb-2 @isset($section->title) titled-section @endisset {{ $formBundle->each_section_default_class }} {{ $section->custom_class }}">
                             @isset($section->title)
                                 <div class="section-title col-12 pl-0 pb-4" style="transform: translateX(12px)">
                                     <h5 class="d-inline bg-white px-2">{!! $section->title !!}</h5>
@@ -35,9 +32,7 @@
                         </section>
                     @endif
                 @endforeach
-
             @else
-
                 <nav class="tab-navigator mb-5 mx-2">
                     <div class="nav nav-pills gap-2 pb-3 px-3" id="tab-navigator" role="tablist">
                         @foreach($formBundle->tabs as $key => $tab)
@@ -57,7 +52,7 @@
                                 @foreach($tab->sections as $section)
                                     @if($section instanceof \BladeBundler\classes\formBundle\partials\Section)
                                         <section
-                                            class="d-flex flex-column my-4 px-4 @isset($section->title) titled-section @endisset {{ $formBundle->each_section_default_class }} {{ $section->custom_class }}">
+                                            class="d-flex flex-column @isset($section->title) titled-section @endisset {{ $formBundle->each_section_default_class }} {{ $section->custom_class }}">
                                             @isset($section->title)
                                                 <div class="section-title col-12 pl-0 pb-4" style="transform: translateX(12px)">
                                                     <h5 class="d-inline bg-white px-2">{!! $section->title !!}</h5>

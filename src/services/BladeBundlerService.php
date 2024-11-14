@@ -40,12 +40,10 @@ class BladeBundlerService
     private function listGenerator(listBundle $oldBundle, $query, callable $QueryMap): listBundle
     {
         $listBundle = $QueryMap($oldBundle, $query);
-        if ($query instanceof LengthAwarePaginator) {
+        if ($query instanceof LengthAwarePaginator && $listBundle->table['pagination'] == null) {
             $pagination = $query->appends(request()->query())->links();
-        } else {
-            $pagination = null;
+            $listBundle->setTablePagination($pagination);
         }
-        $listBundle->setTablePagination($pagination);
         $listBundle->clearRecords();
         return $listBundle;
     }

@@ -44,7 +44,7 @@ this package will help you to organize generating forms and table lists in your 
 To have a list you need your $query which could be paginated or not. if you pass the paginated query you'll get the bundle paginated and if you don't it gives the bundle properly.
 the other parameter that is necessary to make a bundle is a map function. the bundler with pass the query through the map function to generate the list as you desire.
 ```bash
-  $paginated_query = User::paginate(30)->onEachSide(0);
+  $paginated_query = User::paginate(30)->onEachSide(2);
   $listBundle = BB::generateList($paginated_query,['this','defaultListMap']);
 ```
 or

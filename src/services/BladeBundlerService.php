@@ -44,7 +44,7 @@ class BladeBundlerService
             $pagination = $query->appends(request()->query())->links();
             $listBundle->setTablePagination($pagination);
         }
-        $listBundle->clearRecords();
+//        $listBundle->clearRecords();
         return $listBundle;
     }
 

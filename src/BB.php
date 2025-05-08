@@ -30,6 +30,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static bool isCellAny(mixed $object, array $types)
  *
  * @method static string renderLink(array $data)
+ * @method static string renderFormButton(array $data)
  * @method static bool isCellDefined(Cell $cell)
  * @method static bool showFormCell(Cell $cell)
  * @method static array getFormValidTypes(string $flag = null)

@@ -33,7 +33,7 @@
                     @endif
                 @endforeach
             @else
-                <nav class="tab-navigator mb-5 mx-2">
+                <nav class="tab-navigator mb-4 mx-2">
                     <div class="nav nav-pills gap-2 pb-3 px-3" id="tab-navigator" role="tablist">
                         @foreach($formBundle->tabs as $key => $tab)
                             @if($tab instanceof \BladeBundler\classes\formBundle\partials\Tab)

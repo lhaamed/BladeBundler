@@ -82,6 +82,52 @@ class BladeBundlerService
 
     }
 
+    public function renderFormButton(array $data): string
+    {
+
+        
+
+        $title = $data['title'] ?? null;
+        $icon = $data['icon'] ?? null;
+        $primary_method = in_array(strtoupper($data['method']), ['POST', 'GET']) ? $data['method'] : 'POST';
+        $secondary_method = !in_array(strtoupper($data['method']), ['POST', 'GET']) ? $data['method'] : null;
+        if (isset($data['form_custom_class'])) $form_class = $data['form_custom_class']; else $form_class = null;
+        if (isset($data['button_custom_class'])) $button_class = $data['button_custom_class']; else $button_class = null;
+        if (isset($data['form_custom_attributes'])) {
+            $form_attributes = collect($data['form_custom_attributes'])
+                ->map(fn($value, $key) => $key . '="' . $value . '"')
+                ->implode(' ');
+        } else{
+            $form_attributes = null;
+        }
+        $action = $data['action'];
+        $attributes = $data['attributes'] ?? null;
+        $csrf_token = csrf_token();
+
+
+        if (class_exists("lhaamed\\LaraFs\\LaraFsService") && !is_null($icon)) {
+            $final_title = FS::render($icon);
+        } else {
+            $final_title = $title;
+        }
+
+
+        if ($secondary_method !== null) {
+            return "<form action='$action' method='$primary_method' class='$form_class' $form_attributes>
+                    <input type='hidden' name='_token' value='$csrf_token' autocomplete='off'>
+                    <input type='hidden' name='_method' value='$secondary_method'>
+                    <button type='submit' class='$button_class'>$final_title</button>
+                    </form>";
+        } else {
+            return "<form action='$action' method='$primary_method' class='$form_class' $form_attributes>
+                    <input type='hidden' name='_token' value='$csrf_token' autocomplete='off'>
+                    <button type='submit' class='$button_class'>$final_title</button>
+                    </form>";
+        }
+
+
+    }
+
     // STATUS CHECK FUNCTIONS
 
     public function isList(mixed $object): bool

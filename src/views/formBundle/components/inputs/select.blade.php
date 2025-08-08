@@ -2,6 +2,15 @@
 @if($cell->isMultiple())
 
     @if($cell->isAddable())
+
+        @php
+        if (old(preg_replace('/\[\]$/', '', $cell->name)) !== null){
+            $old_list = old(preg_replace('/\[\]$/', '', $cell->name));
+            $combined_array = array_combine($old_list, $old_list);
+            $cell->list = array_merge($cell->list,$combined_array);
+            $cell->default = $combined_array;
+        }
+        @endphp
         @php $class = "multiple-addable-select2";  @endphp
     @else
         @php $class = "multiple-select2";  @endphp
@@ -14,7 +23,6 @@
             dir="ltr"
             @if($cell->isRequired()) required @endif
             @if($cell->isDisabled()) disabled @endif
-            @if($cell->isAddable()) tags: true @endif
             @if($cell->isMultiple()) multiple @endif>
         @if(!$cell->isMultiple())
             <option

@@ -1,5 +1,5 @@
 @if(\BladeBundler\BB::isList($listBundle))
-    <table class="table table-responsive table-bordered table-hover">
+    <table class="table table-responsive table-hover">
         <thead class="table-dark">
         <tr>
             @foreach($listBundle->table['headers'] as $headItem)

@@ -1,9 +1,9 @@
 <?php
 
-namespace BladeBundler\classes\listBundle;
+namespace lhaamed\BladeBundler\classes\listBundle;
 
-use BladeBundler\classes\formBundle\searchFormBundle;
-use BladeBundler\classes\InitialBundle;
+use lhaamed\BladeBundler\classes\formBundle\searchFormBundle;
+use lhaamed\BladeBundler\classes\InitialBundle;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 

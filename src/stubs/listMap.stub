@@ -1,0 +1,50 @@
+<?php
+
+namespace {{ namespace }};
+
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
+use lhaamed\BladeBundler\classes\listBundle\ListBundle;
+use App\Facades\Theme;
+use lhaamed\BladeBundler\BB;
+
+class {{ class }}
+{
+    public static function original(listBundle $listBundle,Collection|LengthAwarePaginator|null $query): listBundle
+    {
+        $items = BB::getQueryItems($query);
+
+        $mapped_data = array_map(function ($eachRecord) use ($query) {
+            $recordModel = $query->find($eachRecord['id']);
+            $action_links = [];
+
+            $action_links[] = BB::renderLink([
+                'title' => 'edit',
+                'icon' => 'pencil',
+                'class' => 'btn btn-sm btn-outline-dark',
+                'href' => $recordModel->getEditLink(),
+            ]);
+
+            return [
+                "column content",
+                'actions' => $action_links
+            ];
+
+        }, $items);
+
+        $listBundle->setTitle('table title');
+        $listBundle->setTableHeader([
+            'column names',
+            'actions',
+        ]);
+        $listBundle->setTableRecords($mapped_data);
+        $listBundle->setTablePagination($query->links(Theme::paginationPath()));
+
+        if (!$listBundle->hasAnyRecordToShow()) {
+            $empty_state = \view('themes.acquella.components.empty-states.empty-state', ['link_title' => 'ایجاد یک ' . User::getModelName(), 'link_url' => route('create:admin:users')])->render();
+            $listBundle->setEmptyListDefaultView($empty_state);
+        }
+
+        return $listBundle;
+    }
+}

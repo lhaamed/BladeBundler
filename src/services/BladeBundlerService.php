@@ -1,11 +1,11 @@
 <?php
 
-namespace BladeBundler\services;
+namespace lhaamed\BladeBundler\services;
 
-use BladeBundler\classes\formBundle\FormBundle;
-use BladeBundler\classes\formBundle\partials\Cell;
-use BladeBundler\classes\formBundle\SearchFormBundle;
-use BladeBundler\classes\listBundle\ListBundle;
+use lhaamed\BladeBundler\classes\formBundle\FormBundle;
+use lhaamed\BladeBundler\classes\formBundle\partials\Cell;
+use lhaamed\BladeBundler\classes\formBundle\SearchFormBundle;
+use lhaamed\BladeBundler\classes\listBundle\ListBundle;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 use lhaamed\LaraFs\FS;
@@ -85,7 +85,7 @@ class BladeBundlerService
     public function renderFormButton(array $data): string
     {
 
-        
+
 
         $title = $data['title'] ?? null;
         $icon = $data['icon'] ?? null;
@@ -132,7 +132,7 @@ class BladeBundlerService
 
     public function isList(mixed $object): bool
     {
-        return get_class($object) == 'BladeBundler\classes\listBundle\ListBundle';
+        return get_class($object) == 'lhaamed\BladeBundler\classes\listBundle\ListBundle';
     }
 
     public function isForm(mixed $object): bool
@@ -146,12 +146,12 @@ class BladeBundlerService
 
     public function isLinkBundle(mixed $object): bool
     {
-        return get_class($object) == 'BladeBundler\classes\linkBundle\LinkBundle';
+        return get_class($object) == 'lhaamed\BladeBundler\classes\linkBundle\LinkBundle';
     }
 
     public function isLink(mixed $object): bool
     {
-        return get_class($object) == 'BladeBundler\classes\linkBundle\partials\LinkItem';
+        return get_class($object) == 'lhaamed\BladeBundler\classes\linkBundle\partials\LinkItem';
     }
 
     public function isCell(mixed $object, string $type): bool

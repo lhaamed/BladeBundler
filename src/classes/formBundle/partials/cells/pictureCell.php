@@ -1,6 +1,6 @@
 <?php
 
-namespace BladeBundler\classes\formBundle\partials\cells;
+namespace lhaamed\BladeBundler\classes\formBundle\partials\cells;
 
 
 class pictureCell extends fileCell

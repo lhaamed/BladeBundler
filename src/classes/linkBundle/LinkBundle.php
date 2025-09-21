@@ -1,8 +1,8 @@
 <?php
 
-namespace BladeBundler\classes\linkBundle;
+namespace lhaamed\BladeBundler\classes\linkBundle;
 
-use BladeBundler\classes\linkBundle\partials\LinkItem;
+use lhaamed\BladeBundler\classes\linkBundle\partials\LinkItem;
 
 class LinkBundle
 {

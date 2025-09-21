@@ -21,10 +21,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "BladeBundler\\BladeBundlerServiceProvider"
+                "lhaamed\\BladeBundler\\BladeBundlerServiceProvider"
             ],
             "aliases": {
-                "BB": "BladeBundler\\BB"
+                "BB": "lhaamed\\BladeBundler\\BB"
             }
         }
     }

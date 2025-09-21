@@ -1,10 +1,10 @@
 <?php
 
-namespace BladeBundler\classes\formBundle;
+namespace lhaamed\BladeBundler\classes\formBundle;
 
-use BladeBundler\classes\formBundle\partials\Section;
-use BladeBundler\classes\formBundle\partials\Tab;
-use BladeBundler\classes\InitialBundle;
+use lhaamed\BladeBundler\classes\formBundle\partials\Section;
+use lhaamed\BladeBundler\classes\formBundle\partials\Tab;
+use lhaamed\BladeBundler\classes\InitialBundle;
 
 class FormBundle extends InitialBundle
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace BladeBundler\classes\formBundle\partials\cells;
+namespace lhaamed\BladeBundler\classes\formBundle\partials\cells;
 
-use BladeBundler\classes\formBundle\partials\Cell;
+use lhaamed\BladeBundler\classes\formBundle\partials\Cell;
 
 class fileCell extends Cell{
 

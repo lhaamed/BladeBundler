@@ -2,6 +2,7 @@
 
 namespace lhaamed\BladeBundler;
 
+use Illuminate\Support\Facades\Blade;
 use lhaamed\BladeBundler\console\commands\MakeListMap;
 use lhaamed\BladeBundler\services\BladeBundlerService;
 use Illuminate\Support\ServiceProvider;
@@ -24,6 +25,8 @@ class BladeBundlerServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->mergeConfigFrom(__DIR__ . '/config/BladeBundler.php','BladeBundler');
+
+        Blade::anonymousComponentPath(__DIR__ .'/views/components','BladeBundler');
 
 
         if ($this->app->runningInConsole()) {

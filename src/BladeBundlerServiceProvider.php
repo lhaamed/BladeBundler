@@ -13,10 +13,6 @@ class BladeBundlerServiceProvider extends ServiceProvider
 {
         public function register(): void
         {
-//        $this->app->singleton('BB', function ($app) {
-//            return BladeBundlerService::getInstance();
-//        });
-
         $this->app->singleton('BB', function ($app) {
             return new BladeBundlerService();
         });
@@ -41,7 +37,7 @@ class BladeBundlerServiceProvider extends ServiceProvider
             $this->loadViewsFrom(resource_path('views/bundler'), 'BladeBundler');
         } else {
             // If views are not published, load from package default views
-            $this->loadViewsFrom(__DIR__.'\views', 'BladeBundler');
+            $this->loadViewsFrom(__DIR__.'/views', 'BladeBundler');
         }
 
         $this->publishes([
@@ -53,8 +49,5 @@ class BladeBundlerServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/assets' => public_path('assets/bundler/js'),
         ],['blade-bundler','assets','bb:assets']);
-
     }
-
-
 }

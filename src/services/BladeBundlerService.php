@@ -2,9 +2,11 @@
 
 namespace lhaamed\BladeBundler\services;
 
+use lhaamed\BladeBundler\classes\breadcrumbBundle\BreadcrumbBundle;
 use lhaamed\BladeBundler\classes\formBundle\FormBundle;
 use lhaamed\BladeBundler\classes\formBundle\partials\Cell;
 use lhaamed\BladeBundler\classes\formBundle\SearchFormBundle;
+use lhaamed\BladeBundler\classes\linkBundle\LinkBundle;
 use lhaamed\BladeBundler\classes\listBundle\ListBundle;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -26,10 +28,7 @@ class BladeBundlerService
     public function generateList(Collection|LengthAwarePaginator|null $query, callable $QueryMap): listBundle
     {
         $listBundle = new ListBundle();
-
-        $finalBundle = self::listGenerator($listBundle, $query, $QueryMap);
-//        $this->bundles[] = $finalBundle;
-        return $finalBundle;
+        return self::listGenerator($listBundle, $query, $QueryMap);
     }
 
     public function regenerateList(listBundle $oldBundle, Collection|LengthAwarePaginator|null $query, callable $QueryMap): listBundle
@@ -44,7 +43,6 @@ class BladeBundlerService
             $pagination = $query->appends(request()->query())->links();
             $listBundle->setTablePagination($pagination);
         }
-//        $listBundle->clearRecords();
         return $listBundle;
     }
 
@@ -59,24 +57,31 @@ class BladeBundlerService
         return new SearchFormBundle($title, $action, $method);
     }
 
+    public function generateLinks(string|null $general_style): LinkBundle
+    {
+        return new LinkBundle($general_style ?? 'btn-sm');
+    }
+
+    public function generateBreadcrumb(string $title): BreadcrumbBundle
+    {
+        return new BreadcrumbBundle($title);
+    }
 
     public function renderLink(array $data): string
     {
         $title = $data['title'] ?? null;
         $icon = $data['icon'] ?? null;
         if (isset($data['class'])) $class = $data['class']; else $class = null;
-        if (isset($data['route'])) $route = $data['route'];
         $href = $data['href'];
         $target = $data['target'] ?? '_self';
         $rel = $data['rel'] ?? 'nofollow';
 
-        $finalHref = $href ?? route($route);
 
         if (class_exists("lhaamed\\LaraFs\\LaraFsService") && !is_null($icon)) {
             $renderedIcon = FS::render($icon);
-            return "<a href='$finalHref' rel='$rel' target='$target' class='$class' title='$title'>{$renderedIcon}</a>";
+            return "<a href='$href' rel='$rel' target='$target' class='$class' title='$title'>{$renderedIcon}</a>";
         } else {
-            return "<a href='$finalHref' rel='$rel' target='$target' class='$class'>{$title}</a>";
+            return "<a href='$href' rel='$rel' target='$target' class='$class'>{$title}</a>";
         }
 
 
@@ -84,9 +89,6 @@ class BladeBundlerService
 
     public function renderFormButton(array $data): string
     {
-
-
-
         $title = $data['title'] ?? null;
         $icon = $data['icon'] ?? null;
         $primary_method = in_array(strtoupper($data['method']), ['POST', 'GET']) ? $data['method'] : 'POST';
@@ -107,10 +109,7 @@ class BladeBundlerService
 
         if (class_exists("lhaamed\\LaraFs\\LaraFsService") && !is_null($icon)) {
             $final_title = FS::render($icon);
-        } else {
-            $final_title = $title;
-        }
-
+        } else $final_title = $title;
 
         if ($secondary_method !== null) {
             return "<form action='$action' method='$primary_method' class='$form_class' $form_attributes>
@@ -144,6 +143,10 @@ class BladeBundlerService
         return $object instanceof SearchFormBundle;
     }
 
+    public function isBreadcrumbBundle(mixed $object): bool
+    {
+        return get_class($object) == 'lhaamed\BladeBundler\classes\breadcrumbBundle\BreadcrumbBundle';
+    }
     public function isLinkBundle(mixed $object): bool
     {
         return get_class($object) == 'lhaamed\BladeBundler\classes\linkBundle\LinkBundle';

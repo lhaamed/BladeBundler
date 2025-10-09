@@ -3,8 +3,10 @@
 namespace lhaamed\BladeBundler;
 
 
+use lhaamed\BladeBundler\classes\breadcrumbBundle\BreadcrumbBundle;
 use lhaamed\BladeBundler\classes\formBundle\FormBundle;
 use lhaamed\BladeBundler\classes\formBundle\partials\Cell;
+use lhaamed\BladeBundler\classes\linkBundle\LinkBundle;
 use lhaamed\BladeBundler\classes\listBundle\ListBundle;
 use lhaamed\BladeBundler\services\BladeBundlerService;
 use Illuminate\Database\Eloquent\Collection;
@@ -17,11 +19,14 @@ use Illuminate\Support\Facades\Facade;
  *
  * @method static formBundle generateForm(string $title, string $action, string $method = 'POST')
  * @method static formBundle generateSearchForm(string $title, string|null $action = null, string $method = 'GET')
+ * @method static LinkBundle generateLinks(string|null $general_style)
+ * @method static BreadcrumbBundle generateBreadcrumb(string $title)
  * @method static array getQueryItems(LengthAwarePaginator|Collection $query)
  *
  * @method static bool isList(mixed $object)
  * @method static bool isForm(mixed $object)
  * @method static bool isSearchForm(mixed $object)
+ * @method static bool isBreadcrumbBundle(mixed $object)
  * @method static bool isLinkBundle(mixed $object)
  * @method static bool isLink(mixed $object)
  * @method static bool isCell(mixed $object, string $type)

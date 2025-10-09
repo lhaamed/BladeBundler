@@ -64,7 +64,7 @@ class BladeBundlerService
 
     public function generateBreadcrumb(string $title): BreadcrumbBundle
     {
-        return new BreadcrumbBundle($title);
+        return (new BreadcrumbBundle($title))->prepend("نمای کلی",route('get:admin:overview'));
     }
 
     public function renderLink(array $data): string

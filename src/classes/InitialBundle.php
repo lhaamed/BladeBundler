@@ -14,7 +14,7 @@ class InitialBundle  {
         if (!is_null($title)) $this->title = $title;
         $this->links = new LinkBundle('btn-sm');
 
-        $this->links->prependLink('بازگشت', 'javascript:history.back()', 'chevron-left');
+        $this->links->prepend('بازگشت', 'javascript:history.back()', 'chevron-left');
     }
 
     public function setTitle(?string $title = null): static

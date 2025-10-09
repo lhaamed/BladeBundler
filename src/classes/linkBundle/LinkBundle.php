@@ -30,27 +30,31 @@ class LinkBundle
     }
 
 
-    public function appendLink(string $title, string $href, string|null $icon = null, array $config = []): void
+    public function append(string $title, string $href, string|null $icon = null, array $config = []): static
     {
 
         $link = new LinkItem($title, $href, $icon,$config);
         $this->links[] = $link;
+        return $this;
     }
 
-    public function prependLink(string $title, string $href, string|null $icon = null, array $config = []): void
+    public function prepend(string $title, string $href, string|null $icon = null, array $config = []): static
     {
         $link = new LinkItem($title, $href, $icon,$config);
         array_unshift($this->links, $link);
+        return $this;
     }
 
-    public function set($linksInArray)
-    {
-        $this->links = $linksInArray;
-    }
 
     public function removeLinkViaIndex(int $index): void
     {
         array_splice($this->links, $index, 1);
+    }
+
+    public function clear(): static
+    {
+        $this->links = [];
+        return $this;
     }
 
 }

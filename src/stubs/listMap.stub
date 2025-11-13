@@ -41,7 +41,7 @@ class {{ class }}
         $listBundle->setTablePagination($query->links(Theme::paginationPath()));
 
         if (!$listBundle->hasAnyRecordToShow()) {
-            $empty_state = \view('themes.acquella.components.empty-states.empty-state', ['link_title' => 'ایجاد یک ' . User::getModelName(), 'link_url' => route('create:admin:users')])->render();
+            $empty_state = \view('themes.acquella.components.empty-states.empty-state', ['link_title' => 'ایجاد یک ' . User::getModelName(), 'link_href' => route('create:admin:users')])->render();
             $listBundle->setEmptyListDefaultView($empty_state);
         }
 

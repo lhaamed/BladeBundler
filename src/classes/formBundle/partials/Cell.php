@@ -13,6 +13,7 @@ class Cell
     public array $validTypes = ['hidden', 'text', 'email', 'textarea', 'tel', 'password', 'number', 'color', 'file', 'select', 'checkbox'];
     public array $hints = [];
     public ?string $label = null;
+    public ?string $icon = null;
     public mixed $default = null;
     public string $placeholder = '';
     public string $class = '';
@@ -29,6 +30,7 @@ class Cell
 
         $this->setType($type);
         $this->setLabel($config['label'] ?? null);
+        $this->setIcon($config['icon'] ?? null);
         $this->setDefault($config['default'] ?? null);
         $this->setPlaceholder($config['placeholder'] ?? null);
         $this->setClass($config['class'] ?? null);
@@ -71,6 +73,11 @@ class Cell
         $this->label = $label;
     }
 
+    public function setIcon(?string $icon = null): void
+    {
+        $this->icon = $icon;
+    }
+
     public function setClass(?string $class = null): void
     {
         if (!is_null($class)) $this->class = $class;
@@ -96,7 +103,7 @@ class Cell
         if (!is_null($reverse)) $this->reverse = !!$reverse;
     }
 
-    public function setHints(array $hints)
+    public function setHints(array $hints): void
     {
         $hintTypes = ['success', 'warning', 'danger', 'info', 'primary', 'secondary'];
 

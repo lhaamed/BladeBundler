@@ -58,20 +58,21 @@ class Row
         $this->cells[] = $cell;
         return $this;
     }
+
     private function prependCell(Cell $cell): static
     {
         array_unshift($this->cells, $cell);
         return $this;
     }
 
-    private function generateCell(string $type,string $name,string $id, array $config): Cell
+    private function generateCell(string $type, string $name, string $id, array $config): Cell
     {
         $all_valid_cells = BB::getFormValidTypes('short_name');
 
-        if (in_array($type,$all_valid_cells)){
-            $type_cell = array_search($type,$all_valid_cells);
+        if (in_array($type, $all_valid_cells)) {
+            $type_cell = array_search($type, $all_valid_cells);
             return new $type_cell($name, $id, $config);
-        }else return new Cell($type, $name, $id);
+        } else return new Cell($type, $name, $id, $config);
         /*return match ($type) {
             'hidden' => new hiddenCell($name, $id, $config),
             'text' => new textCell($name, $id, $config),
@@ -90,12 +91,13 @@ class Row
         };*/
     }
 
-    public function appendInput(string $type,string $name,string $id, array $config = []): static
+    public function appendInput(string $type, string $name, string $id, array $config = []): static
     {
-        return $this->appendCell($this->generateCell($type,$name,$id,$config));
+        return $this->appendCell($this->generateCell($type, $name, $id, $config));
     }
-    public function prependInput(string $type,string $name,string $id, array $config = []): static
+
+    public function prependInput(string $type, string $name, string $id, array $config = []): static
     {
-        return $this->prependCell($this->generateCell($type,$name,$id,$config));
+        return $this->prependCell($this->generateCell($type, $name, $id, $config));
     }
 }

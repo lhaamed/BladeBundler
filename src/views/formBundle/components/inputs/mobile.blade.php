@@ -1,6 +1,6 @@
 @isset($inputObject)
 
-    <input class="form-control @isset($inputObject['input_custom_class']){{$inputObject['input_custom_class']}} @endisset"
+    <input class="form-control  {{$cell->input_class}}"
            type="{{ $inputObject['type'] }}"
            id="{{ $inputObject['id'] }}"
            name="{{ $inputObject['name'] }}"

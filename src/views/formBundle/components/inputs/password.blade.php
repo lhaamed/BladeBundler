@@ -1,7 +1,7 @@
 @isset($cell)
     <div style="position: relative">
         <input
-            class="form-control @if($cell->show_switch) password-switcher-bbjs @endif @isset($cell->class){{$cell->class}} @endisset"
+            class="form-control @if($cell->show_switch) password-switcher-bbjs @endif {{$cell->input_class}}"
             type="{{ $cell->type }}"
             id="{{ $cell->id }}"
             name="{{ $cell->name }}"

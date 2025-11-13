@@ -1,8 +1,5 @@
-
 @if($cell->isMultiple())
-
     @if($cell->isAddable())
-
         @php
         if (old(preg_replace('/\[\]$/', '', $cell->name)) !== null){
             $old_list = old(preg_replace('/\[\]$/', '', $cell->name));

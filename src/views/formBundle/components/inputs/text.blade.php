@@ -1,5 +1,5 @@
 @isset($cell)
-    <input class="form-control @isset($cell->class){{$cell->class}} @endisset"
+    <input class="form-control @isset($cell->input_class){{$cell->input_class}} @endisset"
            type="{{ $cell->type }}"
            id="{{ $cell->id }}"
            name="{{ $cell->name }}"

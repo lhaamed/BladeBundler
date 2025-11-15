@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static listBundle generateList(Collection|LengthAwarePaginator|null $query, callable $QueryMap)
  * @method static listBundle regenerateList(listBundle $oldBundle, Collection|LengthAwarePaginator|null $query, callable $QueryMap)
  *
- * @method static formBundle generateForm(string $title, string $action, string $method = 'POST')
+ * @method static formBundle generateForm(string $title, string $action, string $method = 'POST' , callable|null $formMap = null)
  * @method static formBundle generateSearchForm(string $title, string|null $action = null, string $method = 'GET')
  * @method static LinkBundle generateLinks(string|null $general_style)
  * @method static BreadcrumbBundle generateBreadcrumb(string $title)

@@ -3,8 +3,7 @@
 namespace {{ namespace }};
 
 use lhaamed\BladeBundler\classes\formBundle\FormBundle;
-use App\Facades\Theme;
-use lhaamed\BladeBundler\BB;
+
 
 class {{ class }}
 {

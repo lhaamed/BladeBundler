@@ -10,7 +10,7 @@ use lhaamed\BladeBundler\BB;
 
 class {{ class }}
 {
-    public static function original(listBundle $listBundle,Collection|LengthAwarePaginator|null $query): listBundle
+    public static function original(ListBundle $listBundle,Collection|LengthAwarePaginator|null $query): ListBundle
     {
         $items = BB::getQueryItems($query);
 

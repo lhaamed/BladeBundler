@@ -7,7 +7,7 @@ use lhaamed\BladeBundler\classes\formBundle\FormBundle;
 
 class {{ class }}
 {
-    public static function original(FormBundle $formBundle): FormBundle
+    public static function create(FormBundle $formBundle): FormBundle
         {
             $formBundle->addFileSupport();
             $formBundle->setMode('single-col');

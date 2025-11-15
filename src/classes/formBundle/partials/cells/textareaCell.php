@@ -9,7 +9,7 @@ class textareaCell extends Cell{
     public int $rows = 6;
     public int $cols = 8;
     public ?int $min = null;
-    public int $max = 120;
+    public ?int $max = null;
 
 
     public function __construct(string $name, string $id,array $config)

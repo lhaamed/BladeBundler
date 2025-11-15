@@ -1,0 +1,161 @@
+<?php
+
+namespace {{ namespace }};
+
+use lhaamed\BladeBundler\classes\formBundle\FormBundle;
+use App\Facades\Theme;
+use lhaamed\BladeBundler\BB;
+
+class {{ class }}
+{
+    public static function original(FormBundle $formBundle): FormBundle
+        {
+            $formBundle->addFileSupport();
+            $formBundle->setMode('single-col');
+            $formBundle->setSubmitButton('ذخیره کن');
+
+            $initial_tab = $formBundle->appendTab('اطلاعات اساسی', 'fundamental-information');
+            $section_one = $initial_tab->appendSection();
+
+            $section_one->appendRow('col-xxl-2 col-xl-2 col-lg-6 col-md-12')
+                ->appendInput('text', 'title', 'title', [
+                    'label' => 'عنوان ورودی',
+                    'icon' => 'heading',
+                    'placeholder' => 'عنوان ورودی',
+                    'required' => true,
+                    'reverse' => false,
+                    'disabled' => false,
+                    'max' => 150,
+                    'min' => 10,
+                    'default' => 'مقدار پیشفرض ورودی',
+                    'hints' => [
+                        'متن راهنمای پیش فرض',
+                        [
+                            'type' => 'success',
+                            'content' => 'متن راهنما با رنگ خاص.',
+                        ],
+                    ],
+                    'input_class' => 'specific-class-for-input',
+                    'class' => 'col-xxl-4 col-xl-4 col-lg-4 col-md-12'
+                ])
+                ->appendInput('select', 'items[]', 'items[]', [
+                    'label' => 'عنوان لیست',
+                    'icon' => 'list',
+                    'placeholder' => 'عنوان لیست',
+                    'required' => false,
+                    'is_multiple' => true,
+                    'is_addable' => true,
+                    'disabled' => false,
+                    'list' => ['key' => 'value'],
+                    'default' => 'key',
+                    'hints' => [
+                        'متن راهنمای پیش فرض',
+                        [
+                            'type' => 'success',
+                            'content' => 'متن راهنما با رنگ خاص.',
+                        ],
+                    ],
+                    'class' => 'col-xxl-4 col-xl-4 col-lg-4 col-md-12'
+                ])
+                ->appendInput('picture', 'featured_image', 'featured_image', [
+                    'label' => 'تصویر شاخص',
+                    'icon' => 'image',
+                    'required' => true,
+                    'default_preview' => 'address_to_default_preview_image',
+                    'preview_id' => "featured_image_preview",
+                    'accept' => '.jpg,.png',
+                    'hints' => [
+                        'فقط فرمت های png و jpeg و jpg قابل قبول است.',
+                        'حداکر اندازه قابل قبول ۴۰۰۰ پیکسل است.',
+                        'حداکر حجم قابل قبول ۱.۲ مگابایت است.',
+                    ],
+                    'input_class' => 'specific-class-for-input',
+                    'class' => 'mx-auto'
+                ])
+                ->appendInput('textarea', 'headline', 'headline', [
+                    'label' => 'عنوان ورودی',
+                    'icon' => 'text',
+                    'placeholder' => 'عنوان ورودی',
+                    'required' => true,
+                    'reverse' => false,
+                    'disabled' => false,
+                    'min' => 100,
+                    'max' => 300,
+                    'rows' => 2,
+                    'cols' => 20,
+                    'default' => 'متن پیشفرض',
+                    'hints' => [
+                        'متن راهنمای پیش فرض',
+                        [
+                            'type' => 'success',
+                            'content' => 'متن راهنما با رنگ خاص.',
+                        ],
+                    ],
+                    'input_class' => 'specific-class-for-input',
+                    'class' => 'col-xxl-4 col-xl-4 col-lg-4 col-md-12'
+                ])
+                ->appendInput('hidden', 'model_id', 'model_id', [
+                    'default' => 'value'
+                ])
+                ->appendInput('email', 'email', 'email', [
+                    'label' => 'ایمیل',
+                    'icon' => 'at',
+                    'placeholder' => 'johndoe@domain.com',
+                    'required' => true,
+                    'reverse' => true,
+                    'default' => 'email address',
+                    'hints' => [
+                        'متن راهنمای پیش فرض',
+                        [
+                            'type' => 'success',
+                            'content' => 'متن راهنما با رنگ خاص.',
+                        ],
+                    ],
+                    'input_class' => 'specific-class-for-input',
+                    'class' => 'col-xxl-4 col-xl-4 col-lg-4 col-md-12'
+                ])
+                ->appendInput('tel', 'mobile', 'mobile', [
+                    'label' => 'موبایل',
+                    'icon' => 'mobile',
+                    'placeholder' => 'موبایل را وارد کنید',
+                    'required' => false,
+                    'default' => '+989121234567',
+                    'hints' => [
+                        'متن راهنمای پیش فرض',
+                        [
+                            'type' => 'success',
+                            'content' => 'متن راهنما با رنگ خاص.',
+                        ],
+                    ],
+                    'input_class' => 'specific-class-for-input',
+                    'class' => 'col-xxl-4 col-xl-4 col-lg-4 col-md-12'
+                ])
+                ->appendInput('checkbox', 'permissions[]', 'permissions.1', [
+                    'label' => 'label',
+                    'icon' => 'square-check',
+                    'value' => 'value',
+                    'default' => 'boolean value'
+                ])
+                ->appendInput('color', 'color', 'color', [
+                    'label' => 'color title',
+                    'icon' => 'brush',
+                    'placeholder' => '#abcdef',
+                    'required' => true,
+                    'default' => "#123456",
+                    'hints' => [
+                        'لطفا رنگ را انتخاب کنید.',
+                    ],
+                    'input_class' => 'specific-class-for-input',
+                    'class' => 'col-xxl-4 col-xl-4 col-lg-4 col-md-12'
+                ])
+                ->appendInput('password', 'password', 'password', [
+                    'label' => 'رمز عبور',
+                    'icon' => 'fingerprint',
+                    'placeholder' => 'رمز عبور را وارد کنید.',
+                    'required' => true,
+                    'show_switch' => true,
+                ]);
+
+            return $formBundle;
+        }
+}

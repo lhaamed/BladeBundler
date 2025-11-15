@@ -46,10 +46,11 @@ class BladeBundlerService
         return $listBundle;
     }
 
-
-    public function generateForm(string $title, string $action, string $method = 'POST'): formBundle
+    public function generateForm(string $title, string $action, string $method = 'POST' , callable|null $formMap = null): formBundle
     {
-        return new FormBundle($title, $action, $method);
+        $formBundle = new FormBundle($title, $action, $method);
+        if (!is_null($formMap)) return $formMap($formBundle);
+        else return $formBundle;
     }
 
     public function generateSearchForm(string $title, string|null $action = null, string $method = 'GET'): SearchFormBundle
@@ -204,13 +205,13 @@ class BladeBundlerService
 
             return array_map(function ($each) {
                 return $each['short_name'];
-            }, $allTypes);
+            }, (array)$allTypes);
         } elseif ($flag == 'blade') {
             return array_map(function ($each) {
                 return $each['blade'];
-            }, $allTypes);
+            }, (array)$allTypes);
         } else {
-            return array_keys($allTypes);
+            return array_keys((array)$allTypes);
         }
 
     }

@@ -38,14 +38,13 @@ class Cell
         $this->setRequired($config['required'] ?? null);
         $this->setDisabled($config['disabled'] ?? null);
         $this->setReverse($config['reverse'] ?? null);
-
         if (array_key_exists('hints', $config)) $this->setHints($config['hints']);
     }
 
     // SETTERS
 
 
-    public function setType(string $type)
+    public function setType(string $type): void
     {
         if (in_array($type, BB::getFormValidTypes('short_name'))) $this->type = $type;
     }

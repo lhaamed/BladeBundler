@@ -3,6 +3,7 @@
 namespace lhaamed\BladeBundler;
 
 use Illuminate\Support\Facades\Blade;
+use lhaamed\BladeBundler\console\commands\MakeFormMap;
 use lhaamed\BladeBundler\console\commands\MakeListMap;
 use lhaamed\BladeBundler\services\BladeBundlerService;
 use Illuminate\Support\ServiceProvider;
@@ -28,6 +29,7 @@ class BladeBundlerServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([
                 MakeListMap::class,
+                MakeFormMap::class
             ]);
         }
 

@@ -19,16 +19,16 @@ class selectCell extends Cell
         $this->setIsAddable($config['is_addable'] ?? false);
     }
 
-    public function setList($list)
+    public function setList($list): void
     {
         $this->list = $list;
     }
 
-    public function setIsMultiple(bool $value)
+    public function setIsMultiple(bool $value): void
     {
         $this->is_multiple = $value;
     }
-    public function setIsAddable(bool $value)
+    public function setIsAddable(bool $value): void
     {
         $this->is_addable = $value;
     }

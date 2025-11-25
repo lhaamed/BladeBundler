@@ -15,6 +15,7 @@ class pictureCell extends fileCell
         parent::__construct($name, $id, $config);
         $this->setPreviewId($config['preview_id']);
         $this->setDefaultPreview($config['default_preview']);
+        $this->setAcceptedMimes($config['accept'] ?? null);
     }
 
 
@@ -26,6 +27,11 @@ class pictureCell extends fileCell
     public function setDefaultPreview(string $default_preview): void
     {
         $this->default_preview = $default_preview;
+    }
+
+    public function setAcceptedMimes(string $accepted_mimes): void
+    {
+        $this->accept = $accepted_mimes;
     }
 
 }

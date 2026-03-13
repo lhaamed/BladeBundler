@@ -3,27 +3,51 @@
 namespace lhaamed\BladeBundler\classes\formBundle\partials\cells;
 
 
-class switchCell extends checkboxCell
-{
+use lhaamed\BladeBundler\classes\formBundle\partials\Cell;
 
-    public string $value;
-    public string|null $show_label = null;
+class switchCell extends Cell
+{
+    public array $list = [];
+    public bool $is_multiple = false;
 
     public function __construct(string $name, string $id, array $config)
     {
-        parent::__construct($name, $id, $config);
-        $this->setShowLabel($config['show_label'] ?? null);
-        $this->setValue($config['value']);
+        parent::__construct('switch',$name, $id, $config);
+        $this->setList($config['list']);
+        $this->setIsMultiple($config['is_multiple'] ?? false);
     }
 
-    public function setValue($value): void
+    public function setList($list): void
     {
-        $this->value = $value;
+        $this->list = $list;
     }
 
-    public function setShowLabel(mixed $show_label): void
+    public function setIsMultiple(bool $value): void
     {
-        $this->show_label = $show_label;
+        $this->is_multiple = $value;
     }
 
+    public function isMultiple(): bool
+    {
+        return $this->is_multiple;
+    }
+
+    public function isSingle(): bool
+    {
+        return !$this->is_multiple;
+    }
+
+    public function isListEmpty(): bool
+    {
+        return count($this->list) == 0;
+    }
+
+    public function isDefaultValue($key): bool
+    {
+        if (gettype($this->default) == 'string') {
+            return $key == $this->default;
+        } elseif (gettype($this->default) == 'array') {
+            return in_array($key, $this->default);
+        } else return false;
+    }
 }

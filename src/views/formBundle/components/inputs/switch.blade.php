@@ -1,9 +1,9 @@
 @isset($cell)
     @if($cell->isMultiple())
-        <div class="btn-group pills" role="group" aria-label="Basic checkbox toggle button group">
+        <div class="btn-group w-100" role="group" aria-label="Basic checkbox toggle button group">
             @foreach($cell->list as $key => $checkbox)
-                <input type="checkbox" class="btn-check" name="{{$cell->name}}[]" value="{{$key}}" id="{{$key}}" autocomplete="off">
-                <label class="btn btn-lg btn-outline-{{$checkbox['style'] ?? 'dark'}}" for="{{$key}}">
+                <input type="checkbox" class="btn-check" name="{{$cell->name}}[]" value="{{$key}}" id="{{$key}}" @if(in_array($key,$cell->default)) checked @endif>
+                <label class="btn btn-lg btn-outline-{{$checkbox['style'] ?? 'secondary'}}" for="{{$key}}">
                     @if(isset($checkbox['icon']))
                         @fs($checkbox['icon'],'fa-duotone')
                     @endif
@@ -25,11 +25,11 @@
             --}}
         </div>
     @else
-        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+        <div class="btn-group w-100" role="group" aria-label="Basic radio toggle button group">
 
             @foreach($cell->list as $key => $radio)
-                <input type="radio" class="btn-check" name="{{$cell->name}}" value="{{$key}}" id="{{$key}}" autocomplete="off">
-                <label class="btn btn-lg btn-outline-{{$radio['style'] ?? 'dark'}}" for="{{$key}}">
+                <input type="radio" class="btn-check" name="{{$cell->name}}" value="{{$key}}" id="{{$key}}" @if($cell->default === $key) checked @endif>
+                <label class="btn btn-lg btn-outline-{{$radio['style'] ?? 'secondary'}}" for="{{$key}}">
                     @if(isset($radio['icon']))
                         @fs($radio['icon'],'fa-duotone')
                     @endif

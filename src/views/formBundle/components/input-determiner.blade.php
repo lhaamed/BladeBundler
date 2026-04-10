@@ -6,7 +6,7 @@
 @elseif(BB::isCell($cell,'checkbox'))
     <div class="form-cell {{ $cell->class }} px-1 @isset($row) {{ $row->each_cell_default_class }} @endisset">
         @if($cell->show_label)
-            <label for="{{ $cell->id }}" class="mb-1 mx-2 fw-semibold">
+            <label for="{{ $cell->id }}" class="mb-1 mx-2 fw-semibold form-cell-label">
                 @if(!is_null($cell->icon)) @fs($cell->icon,'fa-duotone') @endif
                 <span>{{ $cell->show_label }}</span>
                 @if($cell->isRequired())
@@ -20,7 +20,7 @@
 @elseif(BB::isCell($cell,'switch'))
     <div class="form-cell {{ $cell->class }} px-1 mb-2 @isset($row) {{ $row->each_cell_default_class }} @endisset">
         @isset($cell->label)
-            <div class="mb-1 mx-2 fw-semibold">
+            <div class="mb-1 mx-2 fw-semibold form-cell-label">
                 @if(!is_null($cell->icon)) @fs($cell->icon,'fa-duotone') @endif
                 <span>{{ $cell->label }}</span>
                 @if($cell->isRequired()) <span class="text-danger">*</span> @endif
@@ -45,7 +45,7 @@
 @else
     <div class="form-cell {{ $cell->class }} px-1 mb-2 @isset($row) {{ $row->each_cell_default_class }} @endisset">
         @isset($cell->label)
-            <label for="{{ $cell->id }}" class="mb-1 mx-2 fw-semibold">
+            <label for="{{ $cell->id }}" class="mb-1 mx-2 fw-semibold form-cell-label">
                 @if(!is_null($cell->icon)) @fs($cell->icon,'fa-duotone') @endif
                 <span>{{ $cell->label }}</span>
                 @if($cell->isRequired()) <span class="text-danger">*</span> @endif

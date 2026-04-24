@@ -17,6 +17,8 @@ class BreadcrumbBundle extends InitialBundle
     function __construct(?string $title = null)
     {
         parent::__construct($title ?? 'breadcrumb Bundle');
+        // this line prevents breadcrumb having default button
+        $this->links->clear();
     }
 
 

@@ -113,7 +113,7 @@
         --}}
 
 
-        <div class="text-right">
+        <div class="form-buttons">
             <button class="btn btn-primary {{ $formBundle->submit_button['custom_class'] }}"
                     type="submit">{!! $formBundle->submit_button['title'] !!}</button>
             @isset($formBundle->submit_side_links)

@@ -98,7 +98,7 @@
             </div>
         @endif
 
-        <div class="text-right">
+        <div class="form-buttons">
             <button class="btn btn-primary {{ $form->submit_button['custom_class'] }}"
                     type="submit">{!! $form->submit_button['title'] !!}</button>
             @isset($form->submit_side_links)

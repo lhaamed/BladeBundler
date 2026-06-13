@@ -5,14 +5,13 @@
 @props([
     'links' => null
 ])
-
 @if(isset($links))
     <div class="links-wrapper">
         @if(count($links->links))
             @foreach($links->links as $link)
                 @if(BB::isLink($link))
                     <a href="{{ $link->href }}" target="{{ $link->target }}"
-                       class="btn @isset($links->each_link_style) {{ $links->each_link_style }}@endisset  @isset($link->custom_style) {{ $link->custom_style }} @endisset">
+                       class="btn @isset($links->each_link_style) {{ $links->each_link_style }}@endisset  @isset($link->custom_class) {{ $link->custom_class }} @endisset">
                         <span>{{ $link->title }}</span>
                         @isset($link->icon)
                             @if(View::exists('fs.fs-icon'))

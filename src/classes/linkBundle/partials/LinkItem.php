@@ -16,14 +16,14 @@ class LinkItem
     public string|null $rel = null;
     public string|null $type = null;
     public string|null $download = null;
-    public string|null $custom_style = null;
+    public string|null $custom_class = null;
 
     function __construct(string $title, string $href, string|null $icon = null, array $config = [])
     {
         $this->title = $title;
         $this->href = $href;
         $this->icon = $icon;
-        if (array_key_exists('style', $config)) $this->custom_style = $config['style'];
+        if (array_key_exists('custom_class', $config)) $this->custom_class = $config['custom_class'];
         if (array_key_exists('rel', $config)) $this->rel = $config['rel'];
         if (array_key_exists('download', $config)) $this->download = $config['download'];
         if (array_key_exists('type', $config)) $this->type = $config['type'];

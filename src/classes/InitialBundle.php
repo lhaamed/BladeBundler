@@ -7,7 +7,7 @@ use lhaamed\BladeBundler\classes\linkBundle\LinkBundle;
 
 class InitialBundle  {
 
-    public string $title = 'Bundle Title';
+    public string|null $title = null;
     public LinkBundle $links;
 
     public function __construct(?string $title = null){
@@ -17,13 +17,13 @@ class InitialBundle  {
         $this->links->prepend('بازگشت', 'javascript:history.back()', 'chevron-left');
     }
 
-    public function setTitle(?string $title = null): static
+    public function setTitle(string|null $title = null): static
     {
-        if (!is_null($title)) $this->title = $title;
+        $this->title = $title;
         return $this;
     }
 
-    public function getTitle(): string
+    public function getTitle(): string|null
     {
         return $this->title;
     }

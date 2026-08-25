@@ -3,19 +3,6 @@
 namespace lhaamed\BladeBundler\classes\formBundle\partials;
 
 use lhaamed\BladeBundler\BB;
-use lhaamed\BladeBundler\classes\formBundle\partials\cells\checkboxCell;
-use lhaamed\BladeBundler\classes\formBundle\partials\cells\colorCell;
-use lhaamed\BladeBundler\classes\formBundle\partials\cells\emailCell;
-use lhaamed\BladeBundler\classes\formBundle\partials\cells\fileCell;
-use lhaamed\BladeBundler\classes\formBundle\partials\cells\hiddenCell;
-use lhaamed\BladeBundler\classes\formBundle\partials\cells\numberCell;
-use lhaamed\BladeBundler\classes\formBundle\partials\cells\passwordCell;
-use lhaamed\BladeBundler\classes\formBundle\partials\cells\pictureCell;
-use lhaamed\BladeBundler\classes\formBundle\partials\cells\selectCell;
-use lhaamed\BladeBundler\classes\formBundle\partials\cells\switchCell;
-use lhaamed\BladeBundler\classes\formBundle\partials\cells\telCell;
-use lhaamed\BladeBundler\classes\formBundle\partials\cells\textareaCell;
-use lhaamed\BladeBundler\classes\formBundle\partials\cells\textCell;
 
 class Row
 {
@@ -65,39 +52,13 @@ class Row
         return $this;
     }
 
-    private function generateCell(string $type, string $name, string $id, array $config): Cell
-    {
-        $all_valid_cells = BB::getFormValidTypes('short_name');
-
-        if (in_array($type, $all_valid_cells)) {
-            $type_cell = array_search($type, $all_valid_cells);
-            return new $type_cell($name, $id, $config);
-        } else return new Cell($type, $name, $id, $config);
-        /*return match ($type) {
-            'hidden' => new hiddenCell($name, $id, $config),
-            'text' => new textCell($name, $id, $config),
-            'email' => new emailCell($name, $id, $config),
-            'textarea' => new textareaCell($name, $id, $config),
-            'tel' => new telCell($name, $id, $config),
-            'password' => new passwordCell($name, $id, $config),
-            'number' => new numberCell($name, $id, $config),
-            'color' => new colorCell($name, $id, $config),
-            'file' => new fileCell($name, $id, $config),
-            'picture' => new pictureCell($name, $id, $config),
-            'select' => new selectCell($name, $id, $config),
-            'switch' => new switchCell($name, $id, $config),
-            'checkbox' => new checkboxCell($name, $id, $config),
-            default => new Cell($type, $name, $id),
-        };*/
-    }
-
     public function appendInput(string $type, string $name, string $id, array $config = []): static
     {
-        return $this->appendCell($this->generateCell($type, $name, $id, $config));
+        return $this->appendCell(BB::generateCell($type, $name, $id, $config));
     }
 
     public function prependInput(string $type, string $name, string $id, array $config = []): static
     {
-        return $this->prependCell($this->generateCell($type, $name, $id, $config));
+        return $this->prependCell(BB::generateCell($type, $name, $id, $config));
     }
 }

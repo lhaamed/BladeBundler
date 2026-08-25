@@ -37,6 +37,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static bool isCellDefined(Cell $cell)
  * @method static bool showFormCell(Cell $cell)
  * @method static array getFormValidTypes(string $flag = null)
+ * @method static Cell generateCell(string $type, string $name, string $id, array $config)
  *
  */
 class BB extends Facade

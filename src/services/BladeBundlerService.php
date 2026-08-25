@@ -216,6 +216,14 @@ class BladeBundlerService
 
     }
 
+    public function generateCell(string $type, string $name, string $id, array $config): Cell
+    {
+        $all_valid_cells = $this->getFormValidTypes('short_name');
+        if (in_array($type, $all_valid_cells)) {
+            $type_cell = array_search($type, $all_valid_cells);
+            return new $type_cell($name, $id, $config);
+        } else return new Cell($type, $name, $id, $config);
+    }
 
     public function isCellDefined(Cell $cell): bool
     {
